@@ -1,0 +1,11 @@
+@charset 'UTF-8';
+
+@use "reset";
+@use "mixins";
+@use "core";
+@use "variables";
+
+@use "./Blocks/header.scss";
+@use "./Blocks/footer.scss";
+@use "./Blocks/main_block.scss";
+@use "./Blocks/catalog.scss";
