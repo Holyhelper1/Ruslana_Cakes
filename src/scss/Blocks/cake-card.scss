@@ -1,0 +1,24 @@
+.cake-card-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  //   background-color: aqua;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+
+  &:hover {
+    transform: scale(1.1);
+    z-index: 2;
+    background-color: #f3f3f3;
+  }
+
+  .cake-card-description {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.2;
+    color: #577c8e;
+    padding: 2px;
+  }
+}
