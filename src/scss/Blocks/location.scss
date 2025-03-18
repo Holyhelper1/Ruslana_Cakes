@@ -1,0 +1,107 @@
+@use "../variables" as *;
+.location-container {
+  background-color: #f4efeb;
+  padding-bottom: 80px;
+
+  .location-title {
+    font-weight: 600;
+    font-size: 32px;
+    text-align: center;
+    padding-top: 40px;
+    color: #2f4157;
+  }
+
+  .location-map-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+    .location-info-title {
+      font-weight: 600;
+      font-size: 20px;
+      color: #2f4157;
+    }
+
+    .location-info-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      .location-info-contacts {
+        .location-info-title {
+          font-weight: 600;
+          font-size: 20px;
+          color: #2f4157;
+          text-align: center;
+        }
+
+        .location-info-contacts-list {
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+          padding-top: 40px;
+
+          .location-info-contacts-phone a {
+            font-weight: 600;
+            font-size: 16px;
+            color: $red-accent;
+
+            &:hover {
+              font-size: 18px;
+            }
+          }
+        }
+      }
+    }
+
+    .location-map {
+      width: 600px;
+      height: 530px;
+    }
+  }
+
+  .location-links-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    padding-top: 40px;
+  }
+}
+
+@media screen and (max-width: 1250px) {
+  .location-container {
+    padding: 15px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .location-container {
+    padding: 15px;
+
+    .location-map-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 30px;
+
+      .location-info-title {
+        text-align: start !important;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .location-map {
+    padding: 20px;
+    width: 100% !important;
+    height: 300px !important;
+  }
+
+  .location-title {
+    font-size: 24px !important;
+  }
+}

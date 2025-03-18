@@ -14,17 +14,6 @@ export interface ICake {
   Price: number;
 }
 
-// const topSeller: ICake[] = [
-//   {
-//     id: "1",
-//     Image:
-//       "https://sun9-78.userapi.com/impg/JEJKCt0ssXqh4Yrk7YXNlBeG8Sg3dNMA-W30Jw/lz96jeRzbH8.jpg?size=1181x1581&quality=95&sign=d99737a23f6e984c41dce0d3ee0ec876&type=album",
-//     Description:
-//       "Цена указана за килограмм Большой выбор бисквитов и начинок Минимальный вес от 2 кг. Декор оплачивается отдельно",
-//     Price: 2000,
-//   },
-// ];
-
 export const Catalog = () => {
   const [cakes, setCakes] = useState<ICake[]>([]);
   const [bento, setBento] = useState<ICake[]>([]);
@@ -33,7 +22,6 @@ export const Catalog = () => {
   const [selectedCategory, setSelectedCategory] = useState<
     "cakes" | "bento" | "cupcake"
   >("cakes");
-  // const [topSellers, setTopSellers] = useState<ICake[]>([]);
   const [topSellers, setTopSellers] = useState<number>(0);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string>("");
@@ -85,20 +73,13 @@ export const Catalog = () => {
 
   useEffect(() => {
     const updateTopSellers = () => {
-      let items: ICake[] = [];
       if (selectedCategory === "cakes" && cakes.length > 0) {
         setTopSellers(3)
-        // items = cakes;
       } else if (selectedCategory === "bento" && bento.length > 0) {
         setTopSellers(1)
-        // items = bento;
       } else if (selectedCategory === "cupcake" && cupcakes.length > 0) {
         setTopSellers(0)
-        // items = cupcakes;
-      }
-      
-      // Получаем топ продавцов, например, первые 3 элемента
-      // setTopSellers(items.slice(0, 3));
+      }      
     };
 
     updateTopSellers();

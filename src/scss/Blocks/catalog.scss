@@ -5,6 +5,7 @@
   flex-direction: column;
   align-items: center;
     background-color: #FDFCFB;
+    padding-bottom: 40px;
 
   .catalog-list {
     display: flex;
@@ -42,7 +43,7 @@
      
 
       .active {
-        border-bottom: 2px solid #c00c39;
+        border-bottom: 2px solid $red-accent;
       }
 
       .catalog-list-item::after {
@@ -52,7 +53,7 @@
         bottom: -6%;
         width: 100%;
         height: 2px;
-        background-color: #c00c39;
+        background-color: $red-accent;
         transform: translateX(-50%) scaleX(0);
         transition: transform 0.3s ease;
       }
@@ -72,7 +73,7 @@
     // align-items: center;
     max-width: 1100px;
     // height: 1000px;
-    // background-color: #c00c39;
+    // background-color: $red-accent;
 
     .catalog-cards {
       display: grid;
@@ -98,7 +99,7 @@
     left: 42%;
     font-family: "Bodoni Moda", sans-serif;
     text-align: left;
-    color: #c00c39;
+    color: $red-accent;
     font-weight: bold;
     font-size: 20px;
     align-self: end;
