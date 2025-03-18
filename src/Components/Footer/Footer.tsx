@@ -4,7 +4,7 @@ export const Footer = () => {
   return (
     <div className="footer">
       <div className="footer-container-up">
-        <div>
+        <div className="footer-logo">
           <img
             src={logo}
             alt=""
@@ -22,7 +22,7 @@ export const Footer = () => {
 
       </div>
         <div className="footer-container-down">
-          <div></div>
+          <div className="footer-empty"></div>
           <div className="footer-social-links"><SocialLinks /></div>
         </div>
       <hr className="footer-hr"></hr>

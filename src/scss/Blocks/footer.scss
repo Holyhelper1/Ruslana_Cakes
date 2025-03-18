@@ -56,11 +56,26 @@
 
 
 @media screen and (max-width: 1024px) {
-
+  .footer {
+    padding-top: 20px ;
+    padding-inline: 30px;
+  }
 
     
 }
 
-@media screen and (max-width: 768px) {
- 
+@media screen and (max-width: 550px) {
+  .footer-container-down{
+    flex-direction: column !important;
+    margin-top: 10px;
+    padding-bottom: 10px ! important;
+
+    .footer-empty {
+      display: none;
+    }
+  }
+  .footer-logo {
+display: none;
+  }
+
 }
