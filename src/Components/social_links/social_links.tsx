@@ -10,7 +10,6 @@ export const SocialLinks = () => {
         />
         <span></span>
       </a>
-
       <a href="https://t.me/ruslanacakes" target="blank">
         <img
           src="https://cdn-icons-png.flaticon.com/128/2111/2111646.png"
