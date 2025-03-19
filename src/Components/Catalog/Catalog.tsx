@@ -101,14 +101,14 @@ export const Catalog = () => {
       ? cupcakes
       : [];
 
-  console.log("displayedItems", displayedItems);
+  // console.log("displayedItems", displayedItems);
 
-  console.log("topSellers", topSellers);
+  // console.log("topSellers", topSellers);
   
   
 
   return (
-    <div className="catalog-container">
+    <div className="catalog-container" id="catalog">
       <div className="catalog-list">
         <h2 className="catalog-list-title">Catalog</h2>
         <ul className="catalog-list-items">

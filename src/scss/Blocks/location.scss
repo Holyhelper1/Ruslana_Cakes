@@ -8,7 +8,7 @@
     font-size: 32px;
     text-align: center;
     padding-top: 40px;
-    color: #2f4157;
+    color: $navy-blue;
   }
 
   .location-map-container {
@@ -19,7 +19,7 @@
     .location-info-title {
       font-weight: 600;
       font-size: 20px;
-      color: #2f4157;
+      color: $navy-blue;
     }
 
     .location-info-container {
@@ -28,10 +28,13 @@
       justify-content: space-between;
 
       .location-info-contacts {
+        display: flex;
+        flex-direction: column;
+        gap: 50px;
         .location-info-title {
           font-weight: 600;
           font-size: 20px;
-          color: #2f4157;
+          color: $navy-blue;
           text-align: center;
         }
 
@@ -69,6 +72,8 @@
     padding-top: 40px;
   }
 }
+
+
 
 @media screen and (max-width: 1250px) {
   .location-container {

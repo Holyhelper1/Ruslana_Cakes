@@ -48,3 +48,13 @@ span {
     height: 50px;
   }
 }
+
+@media screen and (max-width: 360px) {
+  .links {
+    gap: 20px;
+  }
+  .links img {
+    padding: 0;
+  }
+
+}

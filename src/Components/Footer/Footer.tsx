@@ -1,4 +1,5 @@
 import logo from "../../assets/logo_text_light.png";
+import { scrollToSection } from "../../Utils/scroll";
 import { SocialLinks } from "../social_links/social_links";
 export const Footer = () => {
   return (
@@ -14,10 +15,10 @@ export const Footer = () => {
           />
         </div>
         <ul className="footer-menu">
-          <li>Store</li>
-          <li>About us</li>
-          <li>Catalog</li>
-          <li>Contact us</li>
+          <li>Заказать</li>
+          {/* <li>About us</li> */}
+          <li className="footer-menu-item"><a onClick={() => scrollToSection("catalog")}>Каталог</a></li>
+          <li className="footer-menu-item"><a onClick={() => scrollToSection("location")}>Контакты</a></li>
         </ul>
 
       </div>

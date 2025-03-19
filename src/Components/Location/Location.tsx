@@ -2,28 +2,39 @@ import { SocialLinks } from "../social_links/social_links";
 
 export const Location = () => {
   return (
-    <div className="location-container">
+    <div className="location-container" id="location">
       <h3 className="location-title">Как нас найти</h3>
       <div className="location-map-container">
         <div className="location-info-container">
           <div className="location-info-contacts">
-            <h4 className="location-info-title">Контакты</h4>
-            <ul className="location-info-contacts-list">
-              <li className="location-info-contacts-phone">
-                <a href="tel:+79092841484">📞 +7 (909) 284-14-84</a>
-              </li>
-              <li className="location-info-contacts-phone">
-                {" "}
-                <a href="https://t.me/ruslanacakes" target="_blank">
-                  📧 https://t.me/ruslanacakes
-                </a>
-              </li>
-            </ul>
+            <div>
+              <h4 className="location-info-title">Контакты</h4>
+              <ul className="location-info-contacts-list">
+                <li className="location-info-contacts-phone">
+                  <a href="tel:+79092841484">📞 +7 (909) 284-14-84</a>
+                </li>
+                <li className="location-info-contacts-phone">
+                  {" "}
+                  <a href="https://t.me/ruslanacakes" target="_blank">
+                    📧 https://t.me/ruslanacakes
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="location-info-title">Адрес</h4>
+              <ul className="location-info-contacts-list">
+                <li className="location-info-contacts-phone">
+                  <a href="https://yandex.ru/maps/-/CHF8MS8v" target="_blank">
+                    Нижний Новгород, улица Академика Сахарова, 117
+                  </a>
+                </li>
+              </ul>
+            </div>
           </div>
           <div>
             <h4 className="location-info-title">Важная информация!</h4>
             <ul>
-              <li>🤝 Всем привет!</li>
               <li>
                 {" "}
                 🍰 Я домашний кондитер, испеку для вас на заказ торт, капкейки,

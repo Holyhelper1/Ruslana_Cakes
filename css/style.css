@@ -133,11 +133,11 @@ img {
   justify-content: space-around;
   align-items: center;
 }
-.header .header-menu-list .header-menu-item-language {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 5px;
+.header .header-menu-list .header-menu-item {
+  cursor: default;
+}
+.header .header-menu-list .header-menu-item a {
+  cursor: pointer;
 }
 .header .header-menu-list .header-menu-button {
   border: none;
@@ -148,6 +148,9 @@ img {
 }
 .header .header-menu-list .header-menu-button:hover {
   background-color: #FDFCFB;
+}
+.header .header-menu-list .header-menu-cart {
+  width: 30px;
 }
 
 @media screen and (max-width: 768px) {
@@ -164,7 +167,7 @@ img {
   align-items: center;
   padding-top: 40px;
   padding-inline: 80px;
-  background-color: #2F4157;
+  background-color: #2f4157;
   color: #fff;
 }
 .footer .footer-container-up {
@@ -182,6 +185,12 @@ img {
   font-size: 16px;
   font-weight: 400;
   color: #F4EFEB;
+}
+.footer .footer-container-up .footer-menu .footer-menu-item {
+  cursor: default;
+}
+.footer .footer-container-up .footer-menu .footer-menu-item a {
+  cursor: pointer;
 }
 .footer .footer-container-down {
   display: flex;
@@ -249,6 +258,11 @@ img {
   height: 100%;
   z-index: -1;
 }
+.main .main-logo {
+  padding-top: 50px;
+  padding-bottom: 250px;
+  width: 40%;
+}
 .main .main-button {
   font-weight: 600;
   font-family: "Roboto", sans-serif;
@@ -271,12 +285,23 @@ img {
   height: 200px;
 }
 
+@media screen and (max-width: 1800px) {
+  .main-logo {
+    padding-bottom: 10px !important;
+  }
+  .main-button {
+    margin-top: -250px;
+  }
+}
 @media screen and (max-width: 1220px) {
   .main {
     gap: 100px;
   }
   .main .main-logo {
     margin-top: 20px;
+  }
+  .main .main-button {
+    margin-top: 0;
   }
 }
 @media screen and (max-width: 768px) {
@@ -422,7 +447,7 @@ img {
 .cake-card-container:hover {
   transform: scale(1.1);
   z-index: 2;
-  background-color: #f3f3f3;
+  background-color: #ffdfee;
 }
 .cake-card-container .cake-card-description {
   font-weight: 400;
@@ -457,6 +482,11 @@ img {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+.location-container .location-map-container .location-info-container .location-info-contacts {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
 }
 .location-container .location-map-container .location-info-container .location-info-contacts .location-info-title {
   font-weight: 600;
