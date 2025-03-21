@@ -1,7 +1,10 @@
+import { useState } from "react";
 import logo from "../../assets/logo_text_light.png";
 import { scrollToSection } from "../../Utils/scroll";
 import { SocialLinks } from "../social_links/social_links";
+import { Modal } from "../Modal/Modal";
 export const Footer = () => {
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   return (
     <div className="footer">
       <div className="footer-container-up">
@@ -15,7 +18,7 @@ export const Footer = () => {
           />
         </div>
         <ul className="footer-menu">
-          <li>Заказать</li>
+          <li className="footer-menu-item hover" onClick={() => setIsModalOpen(true)}>Заказать</li>
           {/* <li>About us</li> */}
           <li className="footer-menu-item"><a onClick={() => scrollToSection("catalog")}>Каталог</a></li>
           <li className="footer-menu-item"><a onClick={() => scrollToSection("location")}>Контакты</a></li>
@@ -28,6 +31,7 @@ export const Footer = () => {
         </div>
       <hr className="footer-hr"></hr>
       <p>© 2022 Ruslana Cakes</p>
+      {isModalOpen && <Modal onClose={() => setIsModalOpen(false)} />}
     </div>
   );
 };

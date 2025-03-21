@@ -1,4 +1,4 @@
-import cart from "../../assets/icons/shopping-cart.png"
+import cart from "../../assets/icons/trolley.png"
 import { scrollToSection } from "../../Utils/scroll"
 export const Header = () => {
     return (

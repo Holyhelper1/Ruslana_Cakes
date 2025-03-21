@@ -1,0 +1,100 @@
+@use "../variables" as *;
+
+.modal-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+
+  .modal-content {
+    position: relative;
+    background-color: $main-color;
+    width: 600px;
+    height: 600px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+
+    .modal-title {
+      font-size: 20px;
+      margin-bottom: 20px;
+      color: $navy-blue;
+      font-weight: 600;
+    }
+
+    .modal-input {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+
+      input {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+        outline: none;
+      }
+    }
+
+    .modal-form {
+        display: flex;
+        width: 70%;
+        flex-direction: column;
+        gap: 10px;
+
+        select {
+            width: 97%;
+            // padding: 0;
+        }
+
+        textarea {
+            font-size: 16px;
+            resize: none;
+        }
+
+        .modal-button-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-end;
+        }
+    }
+
+    .modal-button {
+        width: 100%;
+    //   width: calc(40% - 10px);
+      height: $input-height; /* Используем ту же высоту, что и у input */
+      margin-bottom: 10px;
+      color: $light; /* Цвет текста */
+      background-color: $navy-blue; /* Основной цвет фона */
+      border: none; /* Без границ */
+      border-radius: $br-radius; /* Радиус скругления */
+      cursor: pointer; /* Стрелка курсора на кнопке */
+      font-size: 16px; /* Размер шрифта */
+      transition: background-color 0.3s, transform 0.2s; /* Плавный переход для цвета и эффекта нажатия */
+      margin-right: 10px;
+      margin-top: 20px;
+      &:hover {
+        background-color: $red-accent; /* Цвет фона при наведении */
+      }
+
+      &:focus {
+        outline: none; /* Без обводки */
+        box-shadow: 0 0 0 2px $light; /* Легкая обводка при фокусе */
+      }
+
+      &:active {
+        transform: scale(0.95); /* Эффект уменьшения при нажатии */
+      }
+    }
+  }
+}

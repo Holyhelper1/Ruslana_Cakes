@@ -108,7 +108,37 @@ img {
   overflow: hidden !important;
 }
 
+.input {
+  width: calc(100% - 50px);
+  height: 44px;
+  padding-inline: 15px;
+  color: #c00c39;
+  background-color: transparent;
+  border: 1px solid #c00c39;
+  border-radius: 30px;
+  margin-bottom: 10px;
+}
+.input:hover {
+  border-color: #2f4157;
+}
+.input:focus {
+  outline: none;
+  background-color: #FDFCFB;
+  color: #c00c39;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 /* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
 .header {
   position: relative;
   display: flex;
@@ -191,6 +221,10 @@ img {
 }
 .footer .footer-container-up .footer-menu .footer-menu-item a {
   cursor: pointer;
+}
+.footer .footer-container-up .footer-menu .footer-menu-item:hover {
+  cursor: pointer;
+  color: #ffdfee;
 }
 .footer .footer-container-down {
   display: flex;
@@ -550,6 +584,91 @@ img {
   .location-title {
     font-size: 24px !important;
   }
+}
+.modal-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+.modal-container .modal-content {
+  position: relative;
+  background-color: #ffdfee;
+  width: 600px;
+  height: 600px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+.modal-container .modal-content .modal-title {
+  font-size: 20px;
+  margin-bottom: 20px;
+  color: #2f4157;
+  font-weight: 600;
+}
+.modal-container .modal-content .modal-input {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.modal-container .modal-content .modal-input input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  outline: none;
+}
+.modal-container .modal-content .modal-form {
+  display: flex;
+  width: 70%;
+  flex-direction: column;
+  gap: 10px;
+}
+.modal-container .modal-content .modal-form select {
+  width: 97%;
+}
+.modal-container .modal-content .modal-form textarea {
+  font-size: 16px;
+  resize: none;
+}
+.modal-container .modal-content .modal-form .modal-button-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+.modal-container .modal-content .modal-button {
+  width: 100%;
+  height: 44px; /* Используем ту же высоту, что и у input */
+  margin-bottom: 10px;
+  color: #FDFCFB; /* Цвет текста */
+  background-color: #2f4157; /* Основной цвет фона */
+  border: none; /* Без границ */
+  border-radius: 30px; /* Радиус скругления */
+  cursor: pointer; /* Стрелка курсора на кнопке */
+  font-size: 16px; /* Размер шрифта */
+  transition: background-color 0.3s, transform 0.2s; /* Плавный переход для цвета и эффекта нажатия */
+  margin-right: 10px;
+  margin-top: 20px;
+}
+.modal-container .modal-content .modal-button:hover {
+  background-color: #c00c39; /* Цвет фона при наведении */
+}
+.modal-container .modal-content .modal-button:focus {
+  outline: none; /* Без обводки */
+  box-shadow: 0 0 0 2px #FDFCFB; /* Легкая обводка при фокусе */
+}
+.modal-container .modal-content .modal-button:active {
+  transform: scale(0.95); /* Эффект уменьшения при нажатии */
 }
 
 /*# sourceMappingURL=style.css.map */

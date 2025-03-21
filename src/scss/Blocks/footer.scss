@@ -32,6 +32,11 @@
         a {
           cursor: pointer;
         }
+
+        &:hover {
+          cursor: pointer;
+          color: $main-color;
+        }
       }
     }
   }
