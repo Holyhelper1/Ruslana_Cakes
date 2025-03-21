@@ -114,12 +114,12 @@ img {
   padding-inline: 15px;
   color: #c00c39;
   background-color: transparent;
-  border: 1px solid #c00c39;
+  border: 1px solid #fff;
   border-radius: 30px;
   margin-bottom: 10px;
 }
 .input:hover {
-  border-color: #2f4157;
+  border-color: #c00c39;
 }
 .input:focus {
   outline: none;
@@ -669,6 +669,92 @@ input[type=number] {
 }
 .modal-container .modal-content .modal-button:active {
   transform: scale(0.95); /* Эффект уменьшения при нажатии */
+}
+
+.admin-login-container {
+  position: relative;
+  background: url("/src/assets/admin-background.jpg") no-repeat center center fixed;
+}
+.admin-login-container .admin-header {
+  position: relative;
+  top: -70px;
+  height: 70px;
+  background: url("/src/assets/admin-background.jpg") no-repeat center center fixed;
+}
+.admin-login-container .admin-login-wrapper {
+  height: 60vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+.admin-login-container .loginForm {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 10px;
+  max-width: 400px;
+  width: 100%;
+  background-color: rgba(212, 154, 219, 0.6784313725);
+  margin: 0 auto;
+  padding: 20px;
+  margin-bottom: 20px;
+  margin-inline: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.459);
+}
+.admin-login-container .loginForm .loginButton {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  padding: 10px 20px;
+  width: 150px;
+  background-color: #ef9ef1;
+  color: #fff;
+  border: none;
+  border-radius: 30px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.admin-login-container .loginForm .loginButton:hover {
+  background-color: #ff006a;
+}
+.admin-login-container .inputField {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  font-size: 16px;
+}
+.admin-login-container .inputField:focus {
+  border-color: #ff0037;
+  outline: none;
+}
+.admin-login-container .passwordToggle {
+  position: absolute;
+  display: flex;
+  justify-content: flex-end;
+  cursor: pointer;
+  top: 147px;
+  right: 30px;
+  font-size: 22px;
+  color: rgba(98, 98, 99, 0.6784313725);
+  width: 100px;
+}
+@media (max-width: 768px) {
+  .admin-login-container .admin-header {
+    top: -200px;
+    height: 200px;
+  }
+  .admin-login-container .admin-login-wrapper {
+    height: auto;
+  }
+  .admin-login-container .loginForm {
+    margin-top: 10px;
+    height: 250px;
+    margin-bottom: 200px;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

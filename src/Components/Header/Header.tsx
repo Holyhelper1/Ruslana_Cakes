@@ -1,14 +1,19 @@
+import { Link } from "react-router"
 import cart from "../../assets/icons/trolley.png"
+import logo from "../../assets/logo_text_light.png"
 import { scrollToSection } from "../../Utils/scroll"
 export const Header = () => {
     return (
         <header className="header">
             <ul className="header-menu-list">
-                <li className="header-menu-item header-menu-item-language"><a onClick={() => scrollToSection("location")}>Контакты</a></li>
-                <li className="header-menu-item"><a onClick={() => scrollToSection("catalog")}>Каталог</a></li>
-                <li className="header-menu-item"></li>
+            <Link to="/" onClick={() => scrollToSection("location")}>
+                <li className="header-menu-item header-menu-item-language">Контакты</li>
+            </Link>
+            <Link to="/" onClick={() => scrollToSection("catalog")}>
+                <li className="header-menu-item">Каталог</li>
+            </Link>
+                {/* <li className="header-menu-item"><img src={logo} alt="logo" width={"180px"} height={"auto"} /></li> */}
                 <li className="header-menu-item">Order</li>
-                {/* <li className="header-menu-item"><button className="header-menu-button">Корзина</button></li> */}
                 <li className="header-menu-item"><a><img className="header-menu-cart" src={cart} alt="cart" /></a></li>
             </ul>            
         </header>

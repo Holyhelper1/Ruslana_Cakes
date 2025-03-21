@@ -145,12 +145,12 @@ img {
   padding-inline: 15px;
   color: $red-accent;
   background-color: transparent;
-  border: 1px solid $red-accent;
+  border: 1px solid #fff;
   border-radius: $br-radius;
   margin-bottom: 10px;
 
   &:hover {
-    border-color: $navy-blue;
+    border-color: $red-accent;
   }
 
   &:focus {

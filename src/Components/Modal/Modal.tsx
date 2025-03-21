@@ -7,7 +7,6 @@ export const Modal = ({ onClose }: { onClose: () => void }) => {
   const [dessert, setDessert] = useState("DEFAULT");
   const [comments, setComments] = useState("");
 
-
   const handleSubmit = () => {
     // Формируем текст сообщения для отправки в Telegram
     const message = `
@@ -22,11 +21,17 @@ export const Modal = ({ onClose }: { onClose: () => void }) => {
       console.log("Сообщение скопировано в буфер обмена:", message);
     });
 
-    const telegramUsername = "alexeevaruslana";
-  const telegramUrl = `https://t.me/${telegramUsername}?text=${encodeURIComponent(message.trim())}`;
+    if (name !== "" && phone !== "" && dessert !== "") {
+      const telegramUsername = "alexeevaruslana";
+      const telegramUrl = `https://t.me/${telegramUsername}?text=${encodeURIComponent(
+        message.trim()
+      )}`;
 
-    // Переход по ссылке
-    window.open(telegramUrl, "_blank");
+      // Переход по ссылке
+      window.open(telegramUrl, "_blank");
+    } else {
+      alert("Пожалуйста, заполните все поля!");
+    }
 
     // Закрываем модальное окно
     onClose();
@@ -36,9 +41,7 @@ export const Modal = ({ onClose }: { onClose: () => void }) => {
     <div className="modal-container">
       <div className="modal-content">
         <p className="modal-title">Внесите данные для заказа</p>
-        <form className="modal-form" 
-        // onSubmit={(e) => e.preventDefault()}
-        >
+        <form className="modal-form" onSubmit={(e) => e.preventDefault()}>
           <input
             className="modal-input input"
             type="text"
@@ -96,10 +99,12 @@ export const Modal = ({ onClose }: { onClose: () => void }) => {
             <button className="modal-button" onClick={onClose}>
               Закрыть
             </button>
-            <button className="modal-button" onClick={handleSubmit} 
-            type="button"
+            <button
+              className="modal-button"
+               onClick={handleSubmit}
+              type="submit"
             >
-             Отправить
+              Отправить
             </button>
           </div>
         </form>
