@@ -4,14 +4,13 @@ import { AdminControlPanel } from "./../Components/Pages/AdminControlPanel/Admin
 
 export interface RouteConfig {
   path: string;
-  component: React.FC; // функциональный компонент
+  component: React.FC; 
 }
 
-// Тип для коллекции маршрутов
 type RoutesArray = RouteConfig[];
 
 export const routes: RoutesArray = [
-  { path: "/", component: Main },
-  { path: "/adminlogin", component: AdminLogin },
-  { path: "/admin/control-panel", component: AdminControlPanel },
+  { path: "/Ruslana_Cakes", component: Main },
+  { path: "/Ruslana_Cakes/adminlogin", component: AdminLogin },
+  { path: "/Ruslana_Cakes/admin/control-panel", component: AdminControlPanel },
 ];
