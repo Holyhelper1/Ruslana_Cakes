@@ -26,7 +26,7 @@ export const AdminLogin: React.FC = () => {
       await signInWithEmailAndPassword(auth, email, password);      
       
       // dispatch({ type: 'LOGIN' });
-      navigate("/Ruslana_Cakes/admin/control-panel");
+      navigate("/admin/control-panel");
     } catch (error) {
       console.error("Ошибка входа:", error);
       setError("Не удалось войти. Проверьте ваши учетные данные.");

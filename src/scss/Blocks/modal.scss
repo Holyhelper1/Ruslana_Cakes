@@ -17,7 +17,6 @@
     background-color: $main-color;
     width: 600px;
     height: 600px;
-    padding: 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -38,7 +37,6 @@
       gap: 10px;
 
       input {
-        padding: 10px;
         border: 1px solid #ccc;
         border-radius: 5px;
         font-size: 16px;
@@ -54,7 +52,6 @@
 
         select {
             width: 97%;
-            // padding: 0;
         }
 
         textarea {
@@ -71,30 +68,45 @@
 
     .modal-button {
         width: 100%;
-    //   width: calc(40% - 10px);
-      height: $input-height; /* Используем ту же высоту, что и у input */
+      height: $input-height;
       margin-bottom: 10px;
-      color: $light; /* Цвет текста */
-      background-color: $navy-blue; /* Основной цвет фона */
-      border: none; /* Без границ */
-      border-radius: $br-radius; /* Радиус скругления */
-      cursor: pointer; /* Стрелка курсора на кнопке */
-      font-size: 16px; /* Размер шрифта */
-      transition: background-color 0.3s, transform 0.2s; /* Плавный переход для цвета и эффекта нажатия */
+      color: $light;
+      background-color: $navy-blue; 
+      border: none;
+      border-radius: $br-radius;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background-color 0.3s, transform 0.2s; 
       margin-right: 10px;
       margin-top: 20px;
       &:hover {
-        background-color: $red-accent; /* Цвет фона при наведении */
+        background-color: $red-accent;
       }
 
       &:focus {
-        outline: none; /* Без обводки */
-        box-shadow: 0 0 0 2px $light; /* Легкая обводка при фокусе */
+        outline: none;
+        box-shadow: 0 0 0 2px $light;
       }
 
       &:active {
-        transform: scale(0.95); /* Эффект уменьшения при нажатии */
+        transform: scale(0.95);
       }
     }
   }
+}
+
+@media screen and (max-width: 768px) {
+
+  .modal-container {
+    position: fixed;
+    width: 100% !important;
+    
+    .modal-content {
+      border-radius: 30px !important;
+      width: 350px !important;
+      height: 400px !important;
+    }
+  }
+
+  
 }

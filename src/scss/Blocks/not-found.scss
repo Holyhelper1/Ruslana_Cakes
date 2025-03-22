@@ -1,0 +1,75 @@
+// NotFound.scss
+@use "../variables" as *;
+
+.not-found-container {
+    position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: $main-color;
+  color: $navy-blue;
+  padding: 20px;
+  text-align: center;
+
+  .not-found-header-color{
+    position: absolute;
+    top: -70px;
+    background-color: $navy-blue;
+    width: 100%;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .not-found-hr {
+    border: none;
+    border-top: 2px solid $navy-blue;
+    width: 60%;
+    margin: 20px 0;
+  }
+
+  h1 {
+    font-family: $third-family;
+    font-size: 4rem;
+    margin-bottom: 15px;
+    color: $navy-blue;
+  }
+
+  p {
+    font-family: $font-family-base;
+    font-size: 1.5rem;
+    margin-bottom: 25px;
+    line-height: 1.6;
+  }
+
+  a {
+    font-family: $font-family-accent;
+    font-size: 1.2rem;
+    color: $red-accent;
+    background-color: $light;
+    padding: 12px 24px;
+    border: none;
+    border-radius: $br-radius;
+    transition: background-color $transition-duration;
+
+    &:hover {
+      background-color: $navy-blue;
+      color: $light;
+      cursor: pointer;
+    }
+  }
+}
+
+
+@media screen and (max-width: 768px) {
+  .not-found-header-color {
+    top: -200px !important;
+    height: 200px !important; 
+  }
+  h1 {
+    font-size: 3rem !important;
+  }
+}

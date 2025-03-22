@@ -602,7 +602,6 @@ input[type=number] {
   background-color: #ffdfee;
   width: 600px;
   height: 600px;
-  padding: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -622,7 +621,6 @@ input[type=number] {
   gap: 10px;
 }
 .modal-container .modal-content .modal-input input {
-  padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
   font-size: 16px;
@@ -648,29 +646,40 @@ input[type=number] {
 }
 .modal-container .modal-content .modal-button {
   width: 100%;
-  height: 44px; /* Используем ту же высоту, что и у input */
+  height: 44px;
   margin-bottom: 10px;
-  color: #FDFCFB; /* Цвет текста */
-  background-color: #2f4157; /* Основной цвет фона */
-  border: none; /* Без границ */
-  border-radius: 30px; /* Радиус скругления */
-  cursor: pointer; /* Стрелка курсора на кнопке */
-  font-size: 16px; /* Размер шрифта */
-  transition: background-color 0.3s, transform 0.2s; /* Плавный переход для цвета и эффекта нажатия */
+  color: #FDFCFB;
+  background-color: #2f4157;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s, transform 0.2s;
   margin-right: 10px;
   margin-top: 20px;
 }
 .modal-container .modal-content .modal-button:hover {
-  background-color: #c00c39; /* Цвет фона при наведении */
+  background-color: #c00c39;
 }
 .modal-container .modal-content .modal-button:focus {
-  outline: none; /* Без обводки */
-  box-shadow: 0 0 0 2px #FDFCFB; /* Легкая обводка при фокусе */
+  outline: none;
+  box-shadow: 0 0 0 2px #FDFCFB;
 }
 .modal-container .modal-content .modal-button:active {
-  transform: scale(0.95); /* Эффект уменьшения при нажатии */
+  transform: scale(0.95);
 }
 
+@media screen and (max-width: 768px) {
+  .modal-container {
+    position: fixed;
+    width: 100% !important;
+  }
+  .modal-container .modal-content {
+    border-radius: 30px !important;
+    width: 350px !important;
+    height: 400px !important;
+  }
+}
 .admin-login-container {
   position: relative;
   background: url("/src/assets/admin-background.jpg") no-repeat center center fixed;
@@ -754,6 +763,72 @@ input[type=number] {
     margin-top: 10px;
     height: 250px;
     margin-bottom: 200px;
+  }
+}
+
+.not-found-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #ffdfee;
+  color: #2f4157;
+  padding: 20px;
+  text-align: center;
+}
+.not-found-container .not-found-header-color {
+  position: absolute;
+  top: -70px;
+  background-color: #2f4157;
+  width: 100%;
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+.not-found-container .not-found-hr {
+  border: none;
+  border-top: 2px solid #2f4157;
+  width: 60%;
+  margin: 20px 0;
+}
+.not-found-container h1 {
+  font-family: "Bodoni Moda", sans-serif;
+  font-size: 4rem;
+  margin-bottom: 15px;
+  color: #2f4157;
+}
+.not-found-container p {
+  font-family: "Roboto", sans-serif;
+  font-size: 1.5rem;
+  margin-bottom: 25px;
+  line-height: 1.6;
+}
+.not-found-container a {
+  font-family: "Inter", sans-serif;
+  font-size: 1.2rem;
+  color: #c00c39;
+  background-color: #FDFCFB;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 30px;
+  transition: background-color 0.2s;
+}
+.not-found-container a:hover {
+  background-color: #2f4157;
+  color: #FDFCFB;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+  .not-found-header-color {
+    top: -200px !important;
+    height: 200px !important;
+  }
+  h1 {
+    font-size: 3rem !important;
   }
 }
 
