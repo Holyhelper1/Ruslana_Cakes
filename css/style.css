@@ -766,6 +766,22 @@ input[type=number] {
   }
 }
 
+.admin-control-panel-container {
+  position: relative;
+  background: url("/src/assets/admin-background.jpg") no-repeat center center fixed;
+}
+.admin-control-panel-container .admin-control-panel-header {
+  position: relative;
+  top: -70px;
+  height: 70px;
+  background: url("/src/assets/admin-background.jpg") no-repeat center center fixed;
+}
+.admin-control-panel-container .admin-control-panel-wrapper {
+  height: 60vh;
+  display: flex;
+  justify-content: center;
+}
+
 .not-found-container {
   position: relative;
   display: flex;

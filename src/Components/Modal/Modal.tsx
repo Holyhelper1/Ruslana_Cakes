@@ -8,7 +8,6 @@ export const Modal = ({ onClose }: { onClose: () => void }) => {
   const [comments, setComments] = useState("");
 
   const handleSubmit = () => {
-    // Формируем текст сообщения для отправки в Telegram
     const message = `
         Добрый день! Хочу оставить заказ.
         Меня зовут: ${name}
@@ -27,13 +26,11 @@ export const Modal = ({ onClose }: { onClose: () => void }) => {
         message.trim()
       )}`;
 
-      // Переход по ссылке
       window.open(telegramUrl, "_blank");
     } else {
       alert("Пожалуйста, заполните все поля!");
     }
 
-    // Закрываем модальное окно
     onClose();
   };
 
@@ -101,7 +98,7 @@ export const Modal = ({ onClose }: { onClose: () => void }) => {
             </button>
             <button
               className="modal-button"
-               onClick={handleSubmit}
+              onClick={handleSubmit}
               type="submit"
             >
               Отправить
