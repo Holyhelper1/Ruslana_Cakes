@@ -1,0 +1,20 @@
+.error_container{
+    height: 100vh;
+    padding-top: 20px;
+}
+.error {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 0 auto;
+    height: 140px;
+    color: rgb(255, 255, 255);
+    font-size: 20px;
+    font-weight: bold;
+    background-color: rgba(205, 130, 240, 0.829);
+    border-radius: 20px;
+    width: 60%;
+    padding-top: 20px;
+}
+

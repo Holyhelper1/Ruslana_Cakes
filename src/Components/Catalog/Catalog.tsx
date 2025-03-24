@@ -6,13 +6,14 @@ import {
   //  doc, getDoc
 } from "firebase/firestore";
 import { db } from "../../firebase";
+import { ICake } from "../../Slices/firebase-api-slice";
 
-export interface ICake {
-  id: string;
-  Image: string;
-  Description: string;
-  Price: number;
-}
+// export interface ICake {
+//   id: string;
+//   Image: string;
+//   Description: string;
+//   Price: number;
+// }
 
 export const Catalog = () => {
   const [cakes, setCakes] = useState<ICake[]>([]);
@@ -59,7 +60,7 @@ export const Catalog = () => {
         Price: doc.data().Price,
       }));
       setCupcakes(cupcakesData as ICake[]);
-    } catch (error: any) {
+    } catch (error: any) { //исправить
       setError("Ошибка при загрузке данных: " + error.message);
       console.error("Ошибка при загрузке данных:", error);
     } finally {
@@ -67,19 +68,18 @@ export const Catalog = () => {
     }
   };
   useEffect(() => {
-
     fetchData();
   }, []);
 
   useEffect(() => {
     const updateTopSellers = () => {
       if (selectedCategory === "cakes" && cakes.length > 0) {
-        setTopSellers(3)
+        setTopSellers(3);
       } else if (selectedCategory === "bento" && bento.length > 0) {
-        setTopSellers(1)
+        setTopSellers(1);
       } else if (selectedCategory === "cupcake" && cupcakes.length > 0) {
-        setTopSellers(0)
-      }      
+        setTopSellers(0);
+      }
     };
 
     updateTopSellers();
@@ -100,12 +100,6 @@ export const Catalog = () => {
       : selectedCategory === "cupcake"
       ? cupcakes
       : [];
-
-  // console.log("displayedItems", displayedItems);
-
-  // console.log("topSellers", topSellers);
-  
-  
 
   return (
     <div className="catalog-container" id="catalog">
@@ -137,7 +131,6 @@ export const Catalog = () => {
             Капкейки
           </li>
         </ul>
-        
       </div>
       {error && <p>{error}</p>}
       <div className="catalog-cards-container">
@@ -154,8 +147,6 @@ export const Catalog = () => {
           {displayedItems.length > 0 && (
             <CakeCard cake={displayedItems[topSellers]} />
           )}
-
-
         </div>
       </div>
     </div>

@@ -164,7 +164,7 @@ input[type=number] {
   align-items: center;
 }
 .header .header-menu-list .header-menu-item {
-  cursor: default;
+  cursor: pointer !important;
 }
 .header .header-menu-list .header-menu-item a {
   cursor: pointer;
@@ -350,7 +350,7 @@ input[type=number] {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #FDFCFB;
+  background-color: #fdfcfb;
   padding-bottom: 40px;
 }
 .catalog-container .catalog-list {
@@ -777,11 +777,142 @@ input[type=number] {
   background: url("/src/assets/admin-background.jpg") no-repeat center center fixed;
 }
 .admin-control-panel-container .admin-control-panel-wrapper {
-  height: 60vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
+}
+.admin-control-panel-container .admin-control-panel-wrapper .admin-control-panel-list-container {
+  position: static;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 512px;
+}
+.admin-control-panel-container .admin-control-panel-wrapper .admin-control-panel-list-container .admin-control-panel-title {
+  font-family: "Bodoni Moda", sans-serif;
+  font-weight: 0;
+  font-size: 40px;
+  margin-bottom: 18px;
+  text-align: center;
+  color: #2f4157;
+}
+.admin-control-panel-container .admin-control-panel-wrapper .admin-control-panel-list-container .admin-control-panel-items {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 39px;
+  margin-bottom: 42px;
+}
+.admin-control-panel-container .admin-control-panel-wrapper .admin-control-panel-list-container .admin-control-panel-items .admin-control-panel-item {
+  position: relative;
+  padding: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  border: 2px solid transparent;
+  color: #000;
+  cursor: pointer;
+}
+.admin-control-panel-container .admin-control-panel-wrapper .admin-control-panel-list-container .admin-control-panel-items .admin-control-panel-item::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -6%;
+  width: 100%;
+  height: 2px;
+  background-color: #c00c39;
+  transform: translateX(-50%) scaleX(0);
+  transition: transform 0.3s ease;
+}
+.admin-control-panel-container .admin-control-panel-wrapper .admin-control-panel-list-container .admin-control-panel-items .admin-control-panel-item:hover::after {
+  transform: translateX(-50%) scaleX(1);
+  cursor: pointer;
+}
+.admin-control-panel-container .admin-control-panel-wrapper .admin-control-panel-chosen-desserts-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  box-sizing: border-box;
+  gap: 40px;
+  margin-bottom: 150px;
+  animation: fade-in 1.2s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+}
+.admin-control-panel-container .admin-control-panel-wrapper .admin-control-panel-chosen-desserts-container .admin-control-panel-chosen-dessert {
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(255, 223, 238, 0.6705882353);
+  padding: 20px;
+  border-radius: 30px;
+  width: 300px;
+}
+.admin-control-panel-container .admin-control-panel-wrapper .admin-control-panel-chosen-desserts-container .admin-control-panel-chosen-dessert .admin-control-panel-chosen-dessert-image {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.admin-control-panel-container .admin-control-panel-wrapper .admin-control-panel-chosen-desserts-container .admin-control-panel-edit-icon:hover:hover {
+  cursor: pointer;
+  animation: shake-horizontal 0.8s cubic-bezier(0.455, 0.03, 0.515, 0.955) both;
+}
+@keyframes shake-horizontal {
+  0%, 100% {
+    transform: translateX(0);
+    transform-origin: 50% 50%;
+  }
+  10% {
+    transform: translateX(-2px);
+  }
+  20%, 40%, 60% {
+    transform: translateX(2px);
+  }
+  30%, 50%, 70% {
+    transform: translateX(-2px);
+  }
+  80% {
+    transform: translateX(2px);
+  }
+  90% {
+    transform: translateX(-2px);
+  }
+}
+.admin-control-panel-container .admin-control-panel-wrapper .admin-control-panel-chosen-desserts-container .admin-control-panel-edit-icon:hover:active {
+  animation: pushed 0.3s ease-in-out both;
+}
+@keyframes pushed {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0.9);
+  }
 }
 
+@media screen and (max-width: 768px) {
+  .admin-control-panel-header {
+    top: -200px !important;
+    height: 200px !important;
+  }
+}
+@media screen and (max-width: 520px) {
+  .admin-control-panel-list-container {
+    width: 100% !important;
+  }
+}
+@media screen and (max-width: 360px) {
+  .admin-control-panel-chosen-dessert {
+    margin: 5px;
+    width: 100% !important;
+  }
+}
 .not-found-container {
   position: relative;
   display: flex;
@@ -845,6 +976,23 @@ input[type=number] {
   }
   h1 {
     font-size: 3rem !important;
+  }
+}
+.private-content-container {
+  position: relative;
+  background: url("/src/assets/locked-page3.jpg") no-repeat center center fixed;
+}
+.private-content-container .private-content-header {
+  position: relative;
+  top: -70px;
+  height: 70px;
+  background: url("/src/assets/locked-page3.jpg") no-repeat center center fixed;
+}
+
+@media screen and (max-width: 768px) {
+  .private-content-header {
+    top: -200px !important;
+    height: 200px !important;
   }
 }
 

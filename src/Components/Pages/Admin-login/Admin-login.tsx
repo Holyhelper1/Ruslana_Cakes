@@ -1,15 +1,13 @@
 
 import { useNavigate } from "react-router-dom";
 import logo from "../../../assets/logo_text_light.png"
-// import styles from "./admin-login.module.css";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import openEye from "../../../assets/icons/open-eye.png";
 import closedEye from "../../../assets/icons/closed-eye.png";
-// import background from "../../../assets/admin-background.jpg";
 import { auth } from "../../../firebase";
-// import { UploadButton } from "../upload-button/upload-button";
-// import { useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useState } from "react";
+import { login } from "../../../Slices/authSlice";
 
 export const AdminLogin: React.FC = () => {
   const [email, setEmail] = useState("");
@@ -18,14 +16,20 @@ export const AdminLogin: React.FC = () => {
   const [showPassword, setShowPassword] = useState("password");
 
   const navigate = useNavigate();
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const handleSubmit = async (e : React.FormEvent) => {
     e.preventDefault();
     try {
-      await signInWithEmailAndPassword(auth, email, password);      
+     const userCredential = await signInWithEmailAndPassword(auth, email, password);   
+      const user = userCredential.user;   
+
+      sessionStorage.setItem("user", JSON.stringify({
+        uid: user.uid,
+        email: user.email
+      }))
       
-      // dispatch({ type: 'LOGIN' });
+      dispatch(login({ uid: user.uid, email: user.email }));
       navigate("/admin/control-panel");
     } catch (error) {
       console.error("Ошибка входа:", error);

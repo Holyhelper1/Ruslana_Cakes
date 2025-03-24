@@ -6,7 +6,7 @@ export const Header = () => {
         <header className="header">
             <ul className="header-menu-list">
             <Link to="/" onClick={() => scrollToSection("location")}>
-                <li className="header-menu-item header-menu-item-language">Контакты</li>
+                <li className="header-menu-item">Контакты</li>
             </Link>
             <Link to="/" onClick={() => scrollToSection("catalog")}>
                 <li className="header-menu-item">Каталог</li>

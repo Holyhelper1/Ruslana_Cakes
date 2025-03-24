@@ -1,13 +1,85 @@
+import { useFetchCakesQuery } from "../../../Slices/firebase-api-slice";
+import { PrivateContent } from "../../Private/private-content";
+import edit from "../../../assets/icons/write.png";
+import editImg from "../../../assets/icons/photo-editing.png";
+
+interface FirestoreDocument {
+  name: string;
+  fields: {
+    Image: { stringValue: string };
+    Description: { stringValue: string };
+    Price: { integerValue: string };
+  };
+}
+
 export const AdminControlPanel: React.FC = () => {
+  const { data = { documents: [] }, isFetching } = useFetchCakesQuery();
+
+  console.log("data:", data);
+
+  
+  const documents = Array.isArray(data) ? [] : data.documents;
+
   return (
     <>
-      <div className="admin-control-panel-container">
-        <div className="admin-control-panel-header"></div>
-        <div className="admin-control-panel-wrapper">
-          <h1>AdminControlPanel</h1>
-        </div>
-      </div>
+      <PrivateContent>
+        {documents.length > 0 ? (
+          <div className="admin-control-panel-container">
+            <div className="admin-control-panel-header"></div>
+            <div className="admin-control-panel-wrapper">
+              <div className="admin-control-panel-list-container">
+                <h1 className="admin-control-panel-title">
+                  Ruslana Cakes Desserts:{" "}
+                </h1>
+                <ul className="admin-control-panel-items">
+                  <li className="admin-control-panel-item">Торт</li>
+                  <li className="admin-control-panel-item">Бенто торт</li>
+                  <li className="admin-control-panel-item">Капкейки</li>
+                </ul>
+              </div>
+              <div className="admin-control-panel-chosen-desserts-container">
+                {isFetching && <div>Загрузка информации...</div>}
+                {documents.map((doc: FirestoreDocument) => (
+                  <div
+                    key={doc.name}
+                    className="admin-control-panel-chosen-dessert"
+                  >
+                    <div className="admin-control-panel-chosen-dessert-name">
+                      Описание:
+                      <hr></hr>
+                      <p>{doc.fields.Description.stringValue}</p>
+                      <img className="admin-control-panel-edit-icon" src={edit} alt="edit" width={"30px"} height={"auto"} loading="lazy" />
+                    </div>
+                    <div className="admin-control-panel-chosen-dessert-image">
+                      <img
+                        src={doc.fields.Image.stringValue}
+                        alt={doc.fields.Description.stringValue}
+                        width={"250px"}
+                        height={"auto"}
+                        loading="lazy"
+                      />
+                      <img className="admin-control-panel-edit-icon" src={editImg} alt="edit" width={"30px"} height={"auto"} loading="lazy" />
+                    </div>
+                    <div className="admin-control-panel-chosen-dessert-price">
+                      <div>
+                      <strong>
+                        Цена:&nbsp;
+                        {/* <hr></hr> */}
+                        {Number(doc.fields.Price.integerValue)} руб.
+                      </strong>
 
+                      </div>
+                      <img className="admin-control-panel-edit-icon" src={edit} alt="edit" width={"30px"} height={"auto"} loading="lazy" />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        ) : (
+          <div>Нет активных десертов на продажу 😔</div>
+        )}
+      </PrivateContent>
 
       {/* <PrivateContent>
         {orders.length > 0 ? (

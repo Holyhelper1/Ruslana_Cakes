@@ -1,0 +1,18 @@
+.private-content-container {   
+  position: relative;
+  background: url("/src/assets/locked-page3.jpg") no-repeat center center fixed ;
+
+    .private-content-header{
+        position: relative;
+          top: -70px ;
+          height: 70px ;
+        background: url("/src/assets/locked-page3.jpg") no-repeat center center fixed ;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .private-content-header{
+        top: -200px !important;
+        height: 200px !important;
+    }
+}

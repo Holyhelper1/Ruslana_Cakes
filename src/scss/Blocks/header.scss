@@ -27,7 +27,8 @@
     align-items: center;
 
     .header-menu-item {
-      cursor: default;
+      cursor: pointer !important;
+
       a {
         cursor: pointer;
       }

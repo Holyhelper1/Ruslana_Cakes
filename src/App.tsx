@@ -2,8 +2,16 @@ import { Route, Routes } from "react-router";
 import { Footer } from "./Components/Footer/Footer";
 import { Header } from "./Components/Header/Header";
 import { RouteConfig, routes } from "./routes/routes";
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { initialize } from "./Slices/authSlice";
 
 const App: React.FC = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(initialize());
+  }, []);
   return (
     <>
       <Header />
