@@ -1,6 +1,4 @@
-// authSlice.ts
 import { createSlice } from '@reduxjs/toolkit';
-// import { getAuth, onAuthStateChanged } from 'firebase/auth';
 
 interface AuthState {
     isAuthenticated: boolean;

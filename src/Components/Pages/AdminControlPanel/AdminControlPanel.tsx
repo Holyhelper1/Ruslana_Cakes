@@ -1,29 +1,124 @@
-import { useFetchCakesQuery } from "../../../Slices/firebase-api-slice";
+import {
+  IFirestoreDocument,
+  useFetchBentoQuery,
+  useFetchCakesQuery,
+  useFetchCupcakesQuery,
+} from "../../../Slices/firebase-api-slice";
 import { PrivateContent } from "../../Private/private-content";
 import edit from "../../../assets/icons/write.png";
 import editImg from "../../../assets/icons/photo-editing.png";
+import deleteImg from "../../../assets/icons/delete.png";
+import createImg from "../../../assets/icons/birthday-cake.png";
+import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { setEditingText } from "../../../Slices/dessertSlice";
 
-interface FirestoreDocument {
-  name: string;
-  fields: {
-    Image: { stringValue: string };
-    Description: { stringValue: string };
-    Price: { integerValue: string };
-  };
-}
+// interface FirestoreDocument {
+//   name: string;
+//   fields: {
+//     Image: { stringValue: string };
+//     Description: { stringValue: string };
+//     Price: { integerValue: string };
+//   };
+// }
 
 export const AdminControlPanel: React.FC = () => {
-  const { data = { documents: [] }, isFetching } = useFetchCakesQuery();
+  const [chosenDessert, setChosenDessert] = useState<string>("cakes");
+  const [currentDessert, setCurrentDessert] = useState<IFirestoreDocument[]>([]);
+  const [nowFetching, setNowFetching] = useState<boolean>(false);
+  // const [isEditingText, setIsEditingText] = useState<boolean>(false);
+  // const [isEditingImage, setIsEditingImage] = useState<boolean>(false);
+  // const [isEditingPrice, setIsEditingPrice] = useState<boolean>(false);
 
-  console.log("data:", data);
+  const [editedValue, setEditedValue] = useState<{ [key: string]: string }>({});
 
-  
-  const documents = Array.isArray(data) ? [] : data.documents;
+  const dispatch = useDispatch();
+
+  const { data: cakesData, isFetching: cakesFetching } = useFetchCakesQuery();
+  const { data: bentoData, isFetching: bentoFetching } = useFetchBentoQuery();
+  const { data: cupcakesData, isFetching: cupcakesFetching } =
+    useFetchCupcakesQuery();
+
+  console.log("cakesData:", cakesData);
+
+  useEffect(() => {
+    let documents: IFirestoreDocument[] = [];
+    setNowFetching(true);
+
+    if (chosenDessert === "cakes") {
+      documents = Array.isArray(cakesData?.documents)
+        ? cakesData.documents
+        : [];
+      setNowFetching(cakesFetching);
+    } else if (chosenDessert === "bento") {
+      documents = Array.isArray(bentoData?.documents)
+        ? bentoData.documents
+        : [];
+      setNowFetching(bentoFetching);
+    } else if (chosenDessert === "cupcake") {
+      documents = Array.isArray(cupcakesData?.documents)
+        ? cupcakesData.documents
+        : [];
+      setNowFetching(cupcakesFetching);
+    }
+
+    setCurrentDessert(documents);
+  }, [chosenDessert, cakesData, bentoData, cupcakesData]);
+
+  const handleChoseDessert = (dessert: string) => {
+    setChosenDessert(dessert);
+  };
+
+
+  // const handleEditTextToggle = (id: string) => {
+  //   // const isEditing = currentDessert.find(doc => doc.name === id)?.isEditingText;
+  //   const isEditing = currentDessert.find(doc => doc.name === id);
+
+  //   console.log("isEditing:", isEditing?.name);
+  //   // console.log("currentDessert:", currentDessert.find(doc => doc.name === id));
+  //   console.log("id:", id);
+    
+
+  //   // Устанавливаем состояние редактирования в противоположное
+  //   dispatch(setEditingText({ id, isEditing: !isEditing }));
+
+  //   console.log("!isEditing:", isEditing);
+    
+  // };
+
+
+
+  const handleEditTextToggle = (id: string) => {
+    // Найдем десерт по id и получим его состояние редактирования
+    const dessertEditingState = currentDessert.find(doc => doc.name === id);
+    
+    // Установка состояния редактирования
+    if (dessertEditingState) {
+      const isEditing = dessertEditingState.isEditingText;
+
+      console.log("isEditing:", isEditing);
+      console.log("dessertEditingState.isEditingText:", dessertEditingState.isEditingText);
+      
+      dispatch(setEditingText({ id, isEditing: !isEditing }));
+    } else {
+      console.error(`Десерт с id ${id} не найден.`);
+    }
+  };
+
+
+  // const handleSave = (id: string) => {
+  //   const description = editedValue[id]; // Получаем измененное значение
+  //   // Отправьте это значение на сервер или в хранилище
+  //   // Например, тут может быть dispatch для сохранения
+
+  //   // Устанавливаем состояние редактирования в false после сохранения
+  //   dispatch(setEditingText({ id, isEditing: false }));
+  // };
 
   return (
     <>
       <PrivateContent>
-        {documents.length > 0 ? (
+        {currentDessert.length > 0 ? (
           <div className="admin-control-panel-container">
             <div className="admin-control-panel-header"></div>
             <div className="admin-control-panel-wrapper">
@@ -31,45 +126,132 @@ export const AdminControlPanel: React.FC = () => {
                 <h1 className="admin-control-panel-title">
                   Ruslana Cakes Desserts:{" "}
                 </h1>
+                <div className="admin-control-panel-create-icon-container">
+                  <h3 className="admin-control-panel-create-icon-title">
+                    Создать новый десерт:
+                  </h3>
+                  <img
+                    className="admin-control-panel-create-icon"
+                    title="Создать новый десерт"
+                    src={createImg}
+                    alt="create"
+                    width={"30px"}
+                    height={"auto"}
+                    loading="lazy"
+                  />
+                </div>
                 <ul className="admin-control-panel-items">
-                  <li className="admin-control-panel-item">Торт</li>
-                  <li className="admin-control-panel-item">Бенто торт</li>
-                  <li className="admin-control-panel-item">Капкейки</li>
+                  <li
+                    className="admin-control-panel-item"
+                    onClick={() => handleChoseDessert("cakes")}
+                  >
+                    Торт
+                  </li>
+                  <li
+                    className="admin-control-panel-item"
+                    onClick={() => handleChoseDessert("bento")}
+                  >
+                    Бенто торт
+                  </li>
+                  <li
+                    className="admin-control-panel-item"
+                    onClick={() => handleChoseDessert("cupcake")}
+                  >
+                    Капкейки
+                  </li>
                 </ul>
               </div>
               <div className="admin-control-panel-chosen-desserts-container">
-                {isFetching && <div>Загрузка информации...</div>}
-                {documents.map((doc: FirestoreDocument) => (
+                {nowFetching && <div>Загрузка информации...</div>}
+                {currentDessert.map((doc: IFirestoreDocument) => (
                   <div
                     key={doc.name}
                     className="admin-control-panel-chosen-dessert"
                   >
+                    <div className="admin-control-panel-edit-icon-container">
+                      <img
+                        className="admin-control-panel-edit-icon-delete"
+                        title="Удалить десерт"
+                        src={deleteImg}
+                        alt="delete"
+                        width={"30px"}
+                        height={"auto"}
+                        loading="lazy"
+                      />
+                    </div>
                     <div className="admin-control-panel-chosen-dessert-name">
                       Описание:
                       <hr></hr>
-                      <p>{doc.fields.Description.stringValue}</p>
-                      <img className="admin-control-panel-edit-icon" src={edit} alt="edit" width={"30px"} height={"auto"} loading="lazy" />
+                      {doc.isEditingText ? (
+                        <textarea
+                        className="admin-control-panel-textarea"
+                          defaultValue={doc.fields.Description.stringValue}
+                        ></textarea>
+                      ) : (
+                        <p>{doc.fields.Description.stringValue}</p>
+                      )}
+                      <div className="admin-control-panel-edit-icon-container">
+                        {doc.isEditingText ? (<>
+                        
+                          <button className="admin-control-panel-save-button" onClick={() => { handleEditTextToggle(doc.name ) }}>
+                            Сохранить
+                          </button>
+                          <button className="admin-control-panel-cancel-button" onClick={() => { handleEditTextToggle(doc.name ) }}>
+                            Отменить
+                          </button>
+                        </>
+                        ) : (
+                          <img
+                            className="admin-control-panel-edit-icon"
+                            title="Редактировать описание"
+                            src={edit}
+                            alt="edit"
+                            width={"30px"}
+                            height={"auto"}
+                            loading="lazy"
+                            onClick={() => handleEditTextToggle(doc.name)}
+                          />
+                        )}
+                      </div>
                     </div>
                     <div className="admin-control-panel-chosen-dessert-image">
                       <img
                         src={doc.fields.Image.stringValue}
-                        alt={doc.fields.Description.stringValue}
+                        alt={doc.fields.Description.stringValue || "dessert"}
                         width={"250px"}
                         height={"auto"}
                         loading="lazy"
                       />
-                      <img className="admin-control-panel-edit-icon" src={editImg} alt="edit" width={"30px"} height={"auto"} loading="lazy" />
+                      <div className="admin-control-panel-edit-icon-container">
+                        <img
+                          className="admin-control-panel-edit-icon"
+                          src={editImg}
+                          title="Редактировать изображение"
+                          alt="edit"
+                          width={"30px"}
+                          height={"auto"}
+                          loading="lazy"
+                          onClick={() => {}}
+                        />
+                      </div>
                     </div>
                     <div className="admin-control-panel-chosen-dessert-price">
                       <div>
-                      <strong>
-                        Цена:&nbsp;
-                        {/* <hr></hr> */}
-                        {Number(doc.fields.Price.integerValue)} руб.
-                      </strong>
-
+                        <strong>
+                          Цена:&nbsp;
+                          {Number(doc.fields.Price.integerValue)} руб.
+                        </strong>
                       </div>
-                      <img className="admin-control-panel-edit-icon" src={edit} alt="edit" width={"30px"} height={"auto"} loading="lazy" />
+                      <img
+                        className="admin-control-panel-edit-icon"
+                        title="Редактировать цену"
+                        src={edit}
+                        alt="edit"
+                        width={"30px"}
+                        height={"auto"}
+                        loading="lazy"
+                        onClick={() => {}}
+                      />
                     </div>
                   </div>
                 ))}
@@ -77,7 +259,9 @@ export const AdminControlPanel: React.FC = () => {
             </div>
           </div>
         ) : (
-          <div>Нет активных десертов на продажу 😔</div>
+          <div className="admin-control-panel-empty">
+            Нет активных десертов на продажу 😔
+          </div>
         )}
       </PrivateContent>
 

@@ -797,6 +797,26 @@ input[type=number] {
   text-align: center;
   color: #2f4157;
 }
+.admin-control-panel-container .admin-control-panel-wrapper .admin-control-panel-list-container .admin-control-panel-create-icon-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 250px;
+  height: 30px;
+  margin-bottom: 42px;
+}
+.admin-control-panel-container .admin-control-panel-wrapper .admin-control-panel-list-container .admin-control-panel-create-icon-container .admin-control-panel-create-icon-title {
+  font-size: 16px;
+  font-weight: bold;
+  color: #2f4157;
+}
+.admin-control-panel-container .admin-control-panel-wrapper .admin-control-panel-list-container .admin-control-panel-create-icon-container .admin-control-panel-create-icon:hover {
+  animation: jump 0.5s both linear alternate infinite;
+  cursor: pointer;
+}
+.admin-control-panel-container .admin-control-panel-wrapper .admin-control-panel-list-container .admin-control-panel-create-icon-container .admin-control-panel-create-icon:active {
+  animation: pushed 0.3s ease-in-out both;
+}
 .admin-control-panel-container .admin-control-panel-wrapper .admin-control-panel-list-container .admin-control-panel-items {
   display: flex;
   justify-content: space-between;
@@ -851,6 +871,88 @@ input[type=number] {
   margin-top: 10px;
   margin-bottom: 10px;
 }
+.admin-control-panel-container .admin-control-panel-wrapper .admin-control-panel-chosen-desserts-container .admin-control-panel-chosen-dessert .admin-control-panel-edit-icon-container {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 20px;
+  padding-top: 10px;
+}
+.admin-control-panel-container .admin-control-panel-wrapper .admin-control-panel-chosen-desserts-container .admin-control-panel-chosen-dessert .admin-control-panel-edit-icon-container .admin-control-panel-save-button {
+  border: none;
+  margin-right: 10px;
+  background-color: #2f4157;
+  border-radius: 30px;
+  padding: 5px 10px;
+  color: #FDFCFB;
+  cursor: pointer;
+}
+.admin-control-panel-container .admin-control-panel-wrapper .admin-control-panel-chosen-desserts-container .admin-control-panel-chosen-dessert .admin-control-panel-edit-icon-container .admin-control-panel-save-button:hover {
+  background-color: #c00c39;
+}
+.admin-control-panel-container .admin-control-panel-wrapper .admin-control-panel-chosen-desserts-container .admin-control-panel-chosen-dessert .admin-control-panel-edit-icon-container .admin-control-panel-cancel-button {
+  border: none;
+  background-color: #c00c39;
+  border-radius: 30px;
+  padding: 5px 10px;
+  color: #FDFCFB;
+  cursor: pointer;
+}
+.admin-control-panel-container .admin-control-panel-wrapper .admin-control-panel-chosen-desserts-container .admin-control-panel-chosen-dessert .admin-control-panel-edit-icon-container .admin-control-panel-cancel-button:hover {
+  background-color: #2f4157;
+}
+.admin-control-panel-container .admin-control-panel-wrapper .admin-control-panel-chosen-desserts-container .admin-control-panel-chosen-dessert .admin-control-panel-textarea {
+  border: none;
+  width: 99%;
+  height: 100px;
+  resize: none;
+}
+.admin-control-panel-container .admin-control-panel-wrapper .admin-control-panel-chosen-desserts-container .admin-control-panel-chosen-dessert .admin-control-panel-textarea:focus {
+  outline: none;
+  box-shadow: 0 0 1px 1px #c00c39;
+}
+.admin-control-panel-container .admin-control-panel-wrapper .admin-control-panel-chosen-desserts-container .admin-control-panel-edit-icon-delete:hover {
+  cursor: pointer;
+  animation: shake-horizontal-del 0.8s cubic-bezier(0.455, 0.03, 0.515, 0.955) both;
+}
+.admin-control-panel-container .admin-control-panel-wrapper .admin-control-panel-chosen-desserts-container .admin-control-panel-edit-icon-delete:active {
+  animation: pushed 0.3s ease-in-out both;
+}
+.admin-control-panel-container .admin-control-panel-wrapper .admin-control-panel-chosen-desserts-container .admin-control-panel-edit-icon:hover:hover {
+  cursor: pointer;
+  animation: shake-horizontal 0.8s cubic-bezier(0.455, 0.03, 0.515, 0.955) both;
+}
+.admin-control-panel-container .admin-control-panel-wrapper .admin-control-panel-chosen-desserts-container .admin-control-panel-edit-icon:hover:active {
+  animation: pushed 0.3s ease-in-out both;
+}
+
+.admin-control-panel-empty {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 150px;
+  font-size: 40px;
+  color: #2f4157;
+  height: 100vh;
+}
+
+@keyframes jump {
+  0% {
+    transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
+  }
+  30% {
+    transform: translate3d(0, -7px, 0) scale3d(1.1, 0.9, 1);
+  }
+  50% {
+    transform: translate3d(0, -12px, 0) scale3d(0.9, 1.1, 1);
+  }
+  70% {
+    transform: translate3d(0, -10px, 0) scale3d(1, 0.95, 1);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
+  }
+}
 @keyframes fade-in {
   0% {
     opacity: 0;
@@ -859,11 +961,7 @@ input[type=number] {
     opacity: 1;
   }
 }
-.admin-control-panel-container .admin-control-panel-wrapper .admin-control-panel-chosen-desserts-container .admin-control-panel-edit-icon:hover:hover {
-  cursor: pointer;
-  animation: shake-horizontal 0.8s cubic-bezier(0.455, 0.03, 0.515, 0.955) both;
-}
-@keyframes shake-horizontal {
+@keyframes shake-horizontal-del {
   0%, 100% {
     transform: translateX(0);
     transform-origin: 50% 50%;
@@ -884,8 +982,23 @@ input[type=number] {
     transform: translateX(-2px);
   }
 }
-.admin-control-panel-container .admin-control-panel-wrapper .admin-control-panel-chosen-desserts-container .admin-control-panel-edit-icon:hover:active {
-  animation: pushed 0.3s ease-in-out both;
+@keyframes shake-horizontal {
+  0%, 100% {
+    transform: translateX(0);
+    transform-origin: 50% 50%;
+  }
+  60% {
+    transform: translateX(2px);
+  }
+  30%, 50%, 70% {
+    transform: translateX(-2px);
+  }
+  80% {
+    transform: translateX(2px);
+  }
+  90% {
+    transform: translateX(-2px);
+  }
 }
 @keyframes pushed {
   0% {
@@ -895,7 +1008,6 @@ input[type=number] {
     transform: scale(0.9);
   }
 }
-
 @media screen and (max-width: 768px) {
   .admin-control-panel-header {
     top: -200px !important;

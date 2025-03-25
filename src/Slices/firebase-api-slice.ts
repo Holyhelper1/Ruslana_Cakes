@@ -3,6 +3,44 @@ import { getAuth } from "firebase/auth";
 
 const FIREBASE_PROJECT_ID = import.meta.env.VITE_FIREBASE_PROJECT_ID;
 
+export interface IFirestoreField {
+  stringValue: string;
+  integerValue: string;
+}
+
+// export interface FirestoreDocument {
+//   name: string;
+//   fields: {
+//     Image: FirestoreField;
+//     Description: FirestoreField;
+//     Price: FirestoreField;
+//   };
+// }
+
+export interface IFirestoreDocument {
+  name: string;
+  fields: {
+    Image: {
+      stringValue: string;
+    };
+    Price: {
+      integerValue: string;
+    };
+    Description: {
+      stringValue: string;
+    };
+  };
+  createTime: string;
+  updateTime: string;
+  isEditingText?: boolean;
+  isEditingImage?: boolean;
+  isEditingPrice?: boolean;
+}
+
+export interface ICakesResponse {
+  documents: IFirestoreDocument[];
+}
+
 export interface ICake {
   id: string;
   Image: string;
@@ -11,9 +49,6 @@ export interface ICake {
 }
 
 const auth = getAuth();
-
-console.log("auth", auth);
-
 
 export const firebaseApiSlice = createApi({
   reducerPath: "api",
@@ -35,17 +70,17 @@ export const firebaseApiSlice = createApi({
   },
   endpoints(builder) {
     return {
-      fetchCakes: builder.query<ICake[], void>({
+      fetchCakes: builder.query<ICakesResponse, void>({
         query() {
           return "cakes";
         },
       }),
-      fetchBento: builder.query<ICake[], void>({
+      fetchBento: builder.query<ICakesResponse, void>({
         query() {
           return "bento";
         },
       }),
-      fetchCupcakes: builder.query<ICake[], void>({
+      fetchCupcakes: builder.query<ICakesResponse, void>({
         query() {
           return "cupcake";
         },
@@ -141,5 +176,5 @@ export const {
   useCreateCupcakeMutation,
   useDeleteCakeMutation,
   useDeleteBentoMutation,
-  useDeleteCupcakeMutation
+  useDeleteCupcakeMutation,
 } = firebaseApiSlice;
