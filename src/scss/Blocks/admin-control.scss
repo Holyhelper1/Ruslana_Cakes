@@ -125,33 +125,32 @@
           padding-right: 20px;
           padding-top: 10px;
 
-          .admin-control-panel-save-button {
-            border: none;
-            margin-right: 10px;
-            background-color: $navy-blue;
-            border-radius: 30px;
-            padding: 5px 10px;
-            color: $light;
-            cursor: pointer;
-            
-            &:hover {
-              background-color: $red-accent;
-              // color: $red-accent;
-            }
-          }
-
-          .admin-control-panel-cancel-button {
-            border: none;
+        }
+        .admin-control-panel-save-button {
+          border: none;
+          margin-right: 10px;
+          background-color: $navy-blue;
+          border-radius: 30px;
+          padding: 5px 10px;
+          color: $light;
+          cursor: pointer;
+          
+          &:hover {
             background-color: $red-accent;
-            border-radius: 30px;
-            padding: 5px 10px;
-            color: $light;
-            cursor: pointer;
+            // color: $red-accent;
+          }
+        }
 
-            &:hover {
-              background-color: $navy-blue;
-              // color: $red-accent;
-            }
+        .admin-control-panel-cancel-button {
+          border: none;
+          background-color: $red-accent;
+          border-radius: 30px;
+          padding: 5px 10px;
+          color: $light;
+          cursor: pointer;
+
+          &:hover {
+            background-color: $navy-blue;
           }
         }
 

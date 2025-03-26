@@ -5,17 +5,8 @@ const FIREBASE_PROJECT_ID = import.meta.env.VITE_FIREBASE_PROJECT_ID;
 
 export interface IFirestoreField {
   stringValue: string;
-  integerValue: string;
+  integerValue: number;
 }
-
-// export interface FirestoreDocument {
-//   name: string;
-//   fields: {
-//     Image: FirestoreField;
-//     Description: FirestoreField;
-//     Price: FirestoreField;
-//   };
-// }
 
 export interface IFirestoreDocument {
   name: string;
@@ -24,7 +15,7 @@ export interface IFirestoreDocument {
       stringValue: string;
     };
     Price: {
-      integerValue: string;
+      integerValue: number;
     };
     Description: {
       stringValue: string;
@@ -87,19 +78,19 @@ export const firebaseApiSlice = createApi({
       }),
       createCake: builder.mutation<ICake, Partial<ICake>>({
         query(cake) {
-          return {
-            url: "cakes",
-            method: "POST",
-            body: { fields: { ...cake } },
-          };
+            return {
+                url: "cakes",
+                method: "POST",
+                body: { ...cake },
+            };
         },
-      }),
+    }),
       createBento: builder.mutation<ICake, Partial<ICake>>({
         query(bento) {
           return {
             url: "bento",
             method: "POST",
-            body: { fields: { ...bento } },
+            body: { ...bento  },
           };
         },
       }),
@@ -108,34 +99,37 @@ export const firebaseApiSlice = createApi({
           return {
             url: "cupcake",
             method: "POST",
-            body: { fields: { ...cupcake } },
+            body: { ...cupcake  },
           };
         },
       }),
-      updateCake: builder.mutation<ICake, Partial<ICake>>({
-        query({ id, ...cake }) {
+
+    updateCake: builder.mutation<ICake, { id: string; fields: IFirestoreDocument['fields'] }>({
+      query({ id, fields }) {
           return {
-            url: `cakes/${id}`,
-            method: "PATCH",
-            body: { fields: { ...cake } },
+              url: `cakes/${id}`,
+              method: "PATCH",
+              body: { fields },
           };
-        },
-      }),
-      updateBento: builder.mutation<ICake, Partial<ICake> & { id: string }>({
-        query({ id, ...bento }) {
+      },
+  }),
+
+
+      updateBento: builder.mutation<ICake, { id: string; fields: IFirestoreDocument['fields'] }>({
+        query({ id, fields }) {
           return {
             url: `bento/${id}`,
             method: "PATCH",
-            body: { fields: { id, ...bento } },
+            body: { fields},
           };
         },
       }),
-      updateCupcake: builder.mutation<ICake, Partial<ICake> & { id: string }>({
-        query({ id, ...cupcake }) {
+      updateCupcake: builder.mutation<ICake, { id: string; fields: IFirestoreDocument['fields'] }>({
+        query({ id, fields }) {
           return {
             url: `cupcake/${id}`,
             method: "PATCH",
-            body: { fields: { id, ...cupcake } },
+            body: { fields },
           };
         },
       }),
@@ -171,6 +165,9 @@ export const {
   useFetchCakesQuery,
   useFetchBentoQuery,
   useFetchCupcakesQuery,
+  useUpdateCakeMutation,
+  useUpdateBentoMutation,
+  useUpdateCupcakeMutation,
   useCreateCakeMutation,
   useCreateBentoMutation,
   useCreateCupcakeMutation,

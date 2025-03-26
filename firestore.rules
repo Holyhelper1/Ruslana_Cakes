@@ -1,0 +1,21 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /cakes/{cakeId} {
+      allow read: if true; /
+      allow write: if true; 
+      allow delete: if true;
+    }
+    
+    match /bento/{bentoId} {
+      allow read: if true; 
+      allow write: if true; 
+    }
+
+    match /cupcake/{cupcakeId} {
+      allow read: if true; 
+      allow write: if true; 
+    }
+  }
+}

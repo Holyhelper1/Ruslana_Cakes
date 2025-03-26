@@ -90,6 +90,26 @@ img {
 //   }
 // }
 
+
+.admin-control-panel-save-button {
+  border: none;
+  margin-right: 10px;
+  background-color: $navy-blue;
+  border-radius: 30px;
+  padding: 5px 10px;
+  color: $light;
+  cursor: pointer;
+  
+  &:hover {
+    background-color: $red-accent;
+    // color: $red-accent;
+  }
+  &:disabled {
+    background-color: gray;
+    color: rgba(189, 189, 189, 0.781);
+  }
+}
+
 .visually-hidden {
   position: absolute !important;
   width: 1px !important;

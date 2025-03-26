@@ -95,6 +95,23 @@ img {
   max-width: 100%;
 }
 
+.admin-control-panel-save-button {
+  border: none;
+  margin-right: 10px;
+  background-color: #2f4157;
+  border-radius: 30px;
+  padding: 5px 10px;
+  color: #FDFCFB;
+  cursor: pointer;
+}
+.admin-control-panel-save-button:hover {
+  background-color: #c00c39;
+}
+.admin-control-panel-save-button:disabled {
+  background-color: gray;
+  color: rgba(189, 189, 189, 0.781);
+}
+
 .visually-hidden {
   position: absolute !important;
   width: 1px !important;
@@ -877,7 +894,7 @@ input[type=number] {
   padding-right: 20px;
   padding-top: 10px;
 }
-.admin-control-panel-container .admin-control-panel-wrapper .admin-control-panel-chosen-desserts-container .admin-control-panel-chosen-dessert .admin-control-panel-edit-icon-container .admin-control-panel-save-button {
+.admin-control-panel-container .admin-control-panel-wrapper .admin-control-panel-chosen-desserts-container .admin-control-panel-chosen-dessert .admin-control-panel-save-button {
   border: none;
   margin-right: 10px;
   background-color: #2f4157;
@@ -886,10 +903,10 @@ input[type=number] {
   color: #FDFCFB;
   cursor: pointer;
 }
-.admin-control-panel-container .admin-control-panel-wrapper .admin-control-panel-chosen-desserts-container .admin-control-panel-chosen-dessert .admin-control-panel-edit-icon-container .admin-control-panel-save-button:hover {
+.admin-control-panel-container .admin-control-panel-wrapper .admin-control-panel-chosen-desserts-container .admin-control-panel-chosen-dessert .admin-control-panel-save-button:hover {
   background-color: #c00c39;
 }
-.admin-control-panel-container .admin-control-panel-wrapper .admin-control-panel-chosen-desserts-container .admin-control-panel-chosen-dessert .admin-control-panel-edit-icon-container .admin-control-panel-cancel-button {
+.admin-control-panel-container .admin-control-panel-wrapper .admin-control-panel-chosen-desserts-container .admin-control-panel-chosen-dessert .admin-control-panel-cancel-button {
   border: none;
   background-color: #c00c39;
   border-radius: 30px;
@@ -897,7 +914,7 @@ input[type=number] {
   color: #FDFCFB;
   cursor: pointer;
 }
-.admin-control-panel-container .admin-control-panel-wrapper .admin-control-panel-chosen-desserts-container .admin-control-panel-chosen-dessert .admin-control-panel-edit-icon-container .admin-control-panel-cancel-button:hover {
+.admin-control-panel-container .admin-control-panel-wrapper .admin-control-panel-chosen-desserts-container .admin-control-panel-chosen-dessert .admin-control-panel-cancel-button:hover {
   background-color: #2f4157;
 }
 .admin-control-panel-container .admin-control-panel-wrapper .admin-control-panel-chosen-desserts-container .admin-control-panel-chosen-dessert .admin-control-panel-textarea {
