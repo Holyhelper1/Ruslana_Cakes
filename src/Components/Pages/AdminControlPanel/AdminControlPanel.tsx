@@ -47,10 +47,8 @@ export const AdminControlPanel: React.FC = () => {
   );
 
   const { data: cakesData, isFetching: cakesFetching } = useFetchCakesQuery();
-
   const { data: bentoData, isFetching: bentoFetching } = useFetchBentoQuery();
-  const { data: cupcakesData, isFetching: cupcakesFetching } =
-    useFetchCupcakesQuery();
+  const { data: cupcakesData, isFetching: cupcakesFetching } = useFetchCupcakesQuery();
 
   const [updateCake] = useUpdateCakeMutation();
   const [updateBento] = useUpdateBentoMutation();
@@ -302,7 +300,7 @@ export const AdminControlPanel: React.FC = () => {
                       className="input"
                       style={{ marginBottom: "10px" }}
                       type="url"
-                      placeholder="Изображение"
+                      placeholder="URL ссылка на изображение"
                       value={newData.Image}
                       onChange={(e) =>
                         setNewData({ ...newData, Image: e.target.value })

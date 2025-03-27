@@ -28,6 +28,8 @@ export const AdminLogin: React.FC = () => {
         uid: user.uid,
         email: user.email
       }))
+
+      
       
       dispatch(login({ uid: user.uid, email: user.email }));
       navigate("/admin/control-panel");
