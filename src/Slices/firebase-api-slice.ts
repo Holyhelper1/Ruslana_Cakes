@@ -78,19 +78,19 @@ export const firebaseApiSlice = createApi({
       }),
       createCake: builder.mutation<ICake, Partial<ICake>>({
         query(cake) {
-            return {
-                url: "cakes",
-                method: "POST",
-                body: { ...cake },
-            };
+          return {
+            url: "cakes",
+            method: "POST",
+            body: { ...cake },
+          };
         },
-    }),
+      }),
       createBento: builder.mutation<ICake, Partial<ICake>>({
         query(bento) {
           return {
             url: "bento",
             method: "POST",
-            body: { ...bento  },
+            body: { ...bento },
           };
         },
       }),
@@ -99,32 +99,40 @@ export const firebaseApiSlice = createApi({
           return {
             url: "cupcake",
             method: "POST",
-            body: { ...cupcake  },
+            body: { ...cupcake },
           };
         },
       }),
 
-    updateCake: builder.mutation<ICake, { id: string; fields: IFirestoreDocument['fields'] }>({
-      query({ id, fields }) {
+      updateCake: builder.mutation<
+        ICake,
+        { id: string; fields: IFirestoreDocument["fields"] }
+      >({
+        query({ id, fields }) {
           return {
-              url: `cakes/${id}`,
-              method: "PATCH",
-              body: { fields },
+            url: `cakes/${id}`,
+            method: "PATCH",
+            body: { fields },
           };
-      },
-  }),
+        },
+      }),
 
-
-      updateBento: builder.mutation<ICake, { id: string; fields: IFirestoreDocument['fields'] }>({
+      updateBento: builder.mutation<
+        ICake,
+        { id: string; fields: IFirestoreDocument["fields"] }
+      >({
         query({ id, fields }) {
           return {
             url: `bento/${id}`,
             method: "PATCH",
-            body: { fields},
+            body: { fields },
           };
         },
       }),
-      updateCupcake: builder.mutation<ICake, { id: string; fields: IFirestoreDocument['fields'] }>({
+      updateCupcake: builder.mutation<
+        ICake,
+        { id: string; fields: IFirestoreDocument["fields"] }
+      >({
         query({ id, fields }) {
           return {
             url: `cupcake/${id}`,

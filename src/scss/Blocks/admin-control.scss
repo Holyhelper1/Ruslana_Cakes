@@ -40,7 +40,9 @@
         align-items: center;
         width: 250px;
         height: 30px;
-        margin-bottom: 42px;
+        margin-bottom: 25px;
+        animation: fade-in 1.2s cubic-bezier(0.39, 0.575, 0.565, 1) both ;
+        
 
         .admin-control-panel-create-icon-title {
           font-size: 16px;
@@ -49,6 +51,7 @@
         }
 
         .admin-control-panel-create-icon {
+          padding-bottom: 20px;
           &:hover {
             animation: jump 0.5s both linear alternate infinite;
             cursor: pointer;
@@ -57,6 +60,13 @@
             animation: pushed 0.3s ease-in-out both;
           }
         }
+
+      }
+      .admin-control-panel-create-form {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
       }
 
       .admin-control-panel-items {
@@ -125,32 +135,18 @@
           padding-right: 20px;
           padding-top: 10px;
 
-        }
-        .admin-control-panel-save-button {
-          border: none;
-          margin-right: 10px;
-          background-color: $navy-blue;
-          border-radius: 30px;
-          padding: 5px 10px;
-          color: $light;
-          cursor: pointer;
-          
-          &:hover {
-            background-color: $red-accent;
-            // color: $red-accent;
+          .admin-control-panel-delete-container{
+            // align-items: center;
+            text-align: center;
+            animation: fade-in 1.2s cubic-bezier(0.39, 0.575, 0.565, 1) both;
           }
-        }
 
-        .admin-control-panel-cancel-button {
-          border: none;
-          background-color: $red-accent;
-          border-radius: 30px;
-          padding: 5px 10px;
-          color: $light;
-          cursor: pointer;
-
-          &:hover {
-            background-color: $navy-blue;
+          
+          .admin-control-panel-delete-text {
+            text-align: center;
+            font-size: 16px;
+            font-weight: bold;
+            color: $navy-blue !important;
           }
         }
 
@@ -159,6 +155,7 @@
           width: 99%;
           height: 100px;
           resize: none;
+          animation: fade-in 1.2s cubic-bezier(0.39, 0.575, 0.565, 1) both ;
 
           &:focus {
             outline: none;
@@ -268,11 +265,6 @@
     transform: translateX(0);
     transform-origin: 50% 50%;
   }
-  // 10% {
-  //   transform: translateX(-2px);
-  // }
-  // 20%,
-  // 40%,
   60% {
     transform: translateX(2px);
   }

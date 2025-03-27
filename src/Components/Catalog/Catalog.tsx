@@ -3,17 +3,9 @@ import { CakeCard } from "./Cake-card/Cake-card";
 import {
   collection,
   getDocs,
-  //  doc, getDoc
 } from "firebase/firestore";
 import { db } from "../../firebase";
 import { ICake } from "../../Slices/firebase-api-slice";
-
-// export interface ICake {
-//   id: string;
-//   Image: string;
-//   Description: string;
-//   Price: number;
-// }
 
 export const Catalog = () => {
   const [cakes, setCakes] = useState<ICake[]>([]);
@@ -60,7 +52,7 @@ export const Catalog = () => {
         Price: doc.data().Price,
       }));
       setCupcakes(cupcakesData as ICake[]);
-    } catch (error: any) { //исправить
+    } catch (error: any) { 
       setError("Ошибка при загрузке данных: " + error.message);
       console.error("Ошибка при загрузке данных:", error);
     } finally {

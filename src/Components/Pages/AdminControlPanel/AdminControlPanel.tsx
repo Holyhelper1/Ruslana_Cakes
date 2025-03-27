@@ -249,7 +249,8 @@ export const AdminControlPanel: React.FC = () => {
     try {
       if (chosenDessert === "cakes") await deleteCake(convertedId).unwrap();
       if (chosenDessert === "bento") await deleteBento(convertedId).unwrap();
-      if (chosenDessert === "cupcake") await deleteCupcake(convertedId).unwrap();
+      if (chosenDessert === "cupcake")
+        await deleteCupcake(convertedId).unwrap();
 
       setCurrentDessert((prev) => prev.filter((doc) => doc.name !== id));
       setDeletingDessertId(null);
@@ -281,7 +282,7 @@ export const AdminControlPanel: React.FC = () => {
                     width={"30px"}
                     height={"auto"}
                     loading="lazy"
-                    onClick={() => setIsCreatingNewDessert(true)}
+                    onClick={() => setIsCreatingNewDessert(!isCreatingNewDessert)}
                   />
                 </div>
                 {isCreatingNewDessert && (
@@ -322,37 +323,53 @@ export const AdminControlPanel: React.FC = () => {
                       }
                       required
                     />
-                    <button
-                      className="admin-control-panel-save-button"
-                      type="submit"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        handleCreate();
-                        setIsCreatingNewDessert(false);
-                      }}
-                      disabled={
-                        !newData.Description || !newData.Image || !newData.Price
-                      }
-                    >
-                      Создать
-                    </button>
+                    <div>
+                      <button
+                        className="save-button"
+                        type="submit"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          handleCreate();
+                          setIsCreatingNewDessert(false);
+                        }}
+                        disabled={
+                          !newData.Description ||
+                          !newData.Image ||
+                          !newData.Price
+                        }
+                      >
+                        Создать
+                      </button>
+                      <button
+                        className="cancel-button"
+                        onClick={() => setIsCreatingNewDessert(false)}
+                      >
+                        Отменить
+                      </button>
+                    </div>
                   </form>
                 )}
                 <ul className="admin-control-panel-items">
                   <li
-                    className="admin-control-panel-item"
+                    className={`admin-control-panel-item ${
+                      chosenDessert === "cakes" ? "active" : ""
+                    }`}
                     onClick={() => handleChoseDessert("cakes")}
                   >
                     Торт
                   </li>
                   <li
-                    className="admin-control-panel-item"
+                    className={`admin-control-panel-item ${
+                      chosenDessert === "bento" ? "active" : ""
+                    }`}
                     onClick={() => handleChoseDessert("bento")}
                   >
                     Бенто торт
                   </li>
                   <li
-                    className="admin-control-panel-item"
+                    className={`admin-control-panel-item ${
+                      chosenDessert === "cupcake" ? "active" : ""
+                    }`}
                     onClick={() => handleChoseDessert("cupcake")}
                   >
                     Капкейки
@@ -368,16 +385,18 @@ export const AdminControlPanel: React.FC = () => {
                   >
                     <div className="admin-control-panel-edit-icon-container">
                       {deletingDessertId === doc.name ? (
-                        <div>
-                          <p>Вы уверены, что хотите удалить десерт?</p>
+                        <div className="admin-control-panel-delete-container">
+                          <p className="admin-control-panel-delete-text">
+                            Вы уверены, что хотите удалить десерт?
+                          </p>
                           <button
-                            className="admin-control-panel-save-button"
+                            className="save-button"
                             onClick={() => handleDelete(doc.name)}
                           >
-                            Удалить
+                            Да
                           </button>
                           <button
-                            className="admin-control-panel-save-button"
+                            className="cancel-button"
                             onClick={() => setDeletingDessertId(null)}
                           >
                             Отменить
@@ -392,7 +411,7 @@ export const AdminControlPanel: React.FC = () => {
                           width={"30px"}
                           height={"auto"}
                           loading="lazy"
-                          onClick={() => setDeletingDessertId(doc.name)} // Устанавливаем ID десерта, который нужно удалить
+                          onClick={() => setDeletingDessertId(doc.name)}
                         />
                       )}
                     </div>
@@ -414,7 +433,7 @@ export const AdminControlPanel: React.FC = () => {
                         {doc.isEditingText ? (
                           <>
                             <button
-                              className="admin-control-panel-save-button"
+                              className="save-button"
                               onClick={() =>
                                 handleUpdate(doc.name, "isEditingText")
                               }
@@ -422,7 +441,7 @@ export const AdminControlPanel: React.FC = () => {
                               Сохранить
                             </button>
                             <button
-                              className="admin-control-panel-cancel-button"
+                              className="cancel-button"
                               onClick={() =>
                                 handleEditToggle(doc.name, "isEditingText")
                               }
@@ -467,7 +486,7 @@ export const AdminControlPanel: React.FC = () => {
                         {doc.isEditingImage ? (
                           <>
                             <button
-                              className="admin-control-panel-save-button"
+                              className="save-button"
                               onClick={() =>
                                 handleEditToggle(doc.name, "isEditingImage")
                               }
@@ -475,7 +494,7 @@ export const AdminControlPanel: React.FC = () => {
                               Сохранить
                             </button>
                             <button
-                              className="admin-control-panel-cancel-button"
+                              className="cancel-button"
                               onClick={() =>
                                 handleEditToggle(doc.name, "isEditingImage")
                               }
@@ -513,7 +532,7 @@ export const AdminControlPanel: React.FC = () => {
                             required
                           />
                           <button
-                            className="admin-control-panel-save-button"
+                            className="save-button"
                             onClick={() =>
                               handleUpdate(doc.name, "isEditingPrice")
                             }
@@ -521,7 +540,7 @@ export const AdminControlPanel: React.FC = () => {
                             Сохранить
                           </button>
                           <button
-                            className="admin-control-panel-cancel-button"
+                            className="cancel-button"
                             onClick={() =>
                               handleEditToggle(doc.name, "isEditingPrice")
                             }

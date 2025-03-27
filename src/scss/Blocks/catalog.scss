@@ -39,11 +39,7 @@
         color: #000;
         cursor: pointer;
       }
-
-      .active {
-        border-bottom: 2px solid $red-accent;
-      }
-
+      
       .catalog-list-item::after {
         content: "";
         position: absolute;

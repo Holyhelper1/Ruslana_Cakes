@@ -95,21 +95,34 @@ img {
   max-width: 100%;
 }
 
-.admin-control-panel-save-button {
+.save-button {
   border: none;
   margin-right: 10px;
+  min-width: 80px;
   background-color: #2f4157;
   border-radius: 30px;
   padding: 5px 10px;
   color: #FDFCFB;
   cursor: pointer;
 }
-.admin-control-panel-save-button:hover {
+.save-button:hover {
   background-color: #c00c39;
 }
-.admin-control-panel-save-button:disabled {
+.save-button:disabled {
   background-color: gray;
   color: rgba(189, 189, 189, 0.781);
+}
+
+.cancel-button {
+  border: none;
+  background-color: #c00c39;
+  border-radius: 30px;
+  padding: 5px 10px;
+  color: #FDFCFB;
+  cursor: pointer;
+}
+.cancel-button:hover {
+  background-color: #2f4157;
 }
 
 .visually-hidden {
@@ -154,6 +167,10 @@ input::-webkit-inner-spin-button {
 /* Firefox */
 input[type=number] {
   -moz-appearance: textfield;
+}
+
+.active {
+  border-bottom: 2px solid #c00c39 !important;
 }
 
 .header {
@@ -400,9 +417,6 @@ input[type=number] {
   border: 2px solid transparent;
   color: #000;
   cursor: pointer;
-}
-.catalog-container .catalog-list .catalog-list-items .active {
-  border-bottom: 2px solid #c00c39;
 }
 .catalog-container .catalog-list .catalog-list-items .catalog-list-item::after {
   content: "";
@@ -820,12 +834,16 @@ input[type=number] {
   align-items: center;
   width: 250px;
   height: 30px;
-  margin-bottom: 42px;
+  margin-bottom: 25px;
+  animation: fade-in 1.2s cubic-bezier(0.39, 0.575, 0.565, 1) both;
 }
 .admin-control-panel-container .admin-control-panel-wrapper .admin-control-panel-list-container .admin-control-panel-create-icon-container .admin-control-panel-create-icon-title {
   font-size: 16px;
   font-weight: bold;
   color: #2f4157;
+}
+.admin-control-panel-container .admin-control-panel-wrapper .admin-control-panel-list-container .admin-control-panel-create-icon-container .admin-control-panel-create-icon {
+  padding-bottom: 20px;
 }
 .admin-control-panel-container .admin-control-panel-wrapper .admin-control-panel-list-container .admin-control-panel-create-icon-container .admin-control-panel-create-icon:hover {
   animation: jump 0.5s both linear alternate infinite;
@@ -833,6 +851,12 @@ input[type=number] {
 }
 .admin-control-panel-container .admin-control-panel-wrapper .admin-control-panel-list-container .admin-control-panel-create-icon-container .admin-control-panel-create-icon:active {
   animation: pushed 0.3s ease-in-out both;
+}
+.admin-control-panel-container .admin-control-panel-wrapper .admin-control-panel-list-container .admin-control-panel-create-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
 }
 .admin-control-panel-container .admin-control-panel-wrapper .admin-control-panel-list-container .admin-control-panel-items {
   display: flex;
@@ -894,34 +918,22 @@ input[type=number] {
   padding-right: 20px;
   padding-top: 10px;
 }
-.admin-control-panel-container .admin-control-panel-wrapper .admin-control-panel-chosen-desserts-container .admin-control-panel-chosen-dessert .admin-control-panel-save-button {
-  border: none;
-  margin-right: 10px;
-  background-color: #2f4157;
-  border-radius: 30px;
-  padding: 5px 10px;
-  color: #FDFCFB;
-  cursor: pointer;
+.admin-control-panel-container .admin-control-panel-wrapper .admin-control-panel-chosen-desserts-container .admin-control-panel-chosen-dessert .admin-control-panel-edit-icon-container .admin-control-panel-delete-container {
+  text-align: center;
+  animation: fade-in 1.2s cubic-bezier(0.39, 0.575, 0.565, 1) both;
 }
-.admin-control-panel-container .admin-control-panel-wrapper .admin-control-panel-chosen-desserts-container .admin-control-panel-chosen-dessert .admin-control-panel-save-button:hover {
-  background-color: #c00c39;
-}
-.admin-control-panel-container .admin-control-panel-wrapper .admin-control-panel-chosen-desserts-container .admin-control-panel-chosen-dessert .admin-control-panel-cancel-button {
-  border: none;
-  background-color: #c00c39;
-  border-radius: 30px;
-  padding: 5px 10px;
-  color: #FDFCFB;
-  cursor: pointer;
-}
-.admin-control-panel-container .admin-control-panel-wrapper .admin-control-panel-chosen-desserts-container .admin-control-panel-chosen-dessert .admin-control-panel-cancel-button:hover {
-  background-color: #2f4157;
+.admin-control-panel-container .admin-control-panel-wrapper .admin-control-panel-chosen-desserts-container .admin-control-panel-chosen-dessert .admin-control-panel-edit-icon-container .admin-control-panel-delete-text {
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+  color: #2f4157 !important;
 }
 .admin-control-panel-container .admin-control-panel-wrapper .admin-control-panel-chosen-desserts-container .admin-control-panel-chosen-dessert .admin-control-panel-textarea {
   border: none;
   width: 99%;
   height: 100px;
   resize: none;
+  animation: fade-in 1.2s cubic-bezier(0.39, 0.575, 0.565, 1) both;
 }
 .admin-control-panel-container .admin-control-panel-wrapper .admin-control-panel-chosen-desserts-container .admin-control-panel-chosen-dessert .admin-control-panel-textarea:focus {
   outline: none;
