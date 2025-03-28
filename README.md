@@ -5,7 +5,11 @@
 
 sass --watch ./src/scss/main.scss ./css/style.css
 
-# Online web
+# start vite
+
+npm start
+
+# Online web url
 
 https://ruslana-cakes.web.app/
 

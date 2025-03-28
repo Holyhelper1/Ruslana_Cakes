@@ -64,6 +64,19 @@ body {
   line-height: 1.75;
   background-color: #ffdfee;
 }
+body::-webkit-scrollbar {
+  width: 10px;
+}
+body::-webkit-scrollbar-track {
+  background: #2f4157;
+}
+body::-webkit-scrollbar-thumb {
+  background: #ffdfee;
+  border-radius: 10px;
+}
+body::-webkit-scrollbar-thumb:hover {
+  background: #c00c39;
+}
 
 a,
 button,

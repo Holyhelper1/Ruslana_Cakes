@@ -5,6 +5,25 @@ body {
   font-weight: 300;
   line-height: 1.75;
   background-color: $main-color;
+
+
+
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: $navy-blue;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: $main-color;
+    border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: $red-accent;
+  }
 }
 
 a,
