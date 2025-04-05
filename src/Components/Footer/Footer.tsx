@@ -5,6 +5,8 @@ import { SocialLinks } from "../social_links/social_links";
 import { Modal } from "../Modal/Modal";
 export const Footer = () => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+
+  const yearNow = new Date().getFullYear();
   return (
     <div className="footer">
       <div className="footer-container-up">
@@ -30,7 +32,7 @@ export const Footer = () => {
           <div className="footer-social-links"><SocialLinks /></div>
         </div>
       <hr className="footer-hr"></hr>
-      <p>© 2022 Ruslana Cakes</p>
+      <p>© {yearNow} Ruslana Cakes</p>
       {isModalOpen && <Modal onClose={() => setIsModalOpen(false)} />}
     </div>
   );

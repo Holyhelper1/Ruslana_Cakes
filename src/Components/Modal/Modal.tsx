@@ -9,11 +9,13 @@ export const Modal = ({ onClose }: { onClose: () => void }) => {
 
   const handleSubmit = () => {
     const message = `
-        Добрый день! Хочу оставить заказ.
-        Меня зовут: ${name}
-        Мой контактный телефон: ${phone}
-        Вид десерта: ${dessert}
-        Комментарии: ${comments}
+    Заказ с сайта https://ruslana-cakes.web.app/:
+
+      Добрый день! Хочу оставить заказ.
+    Меня зовут: ${name}
+    Мой контактный телефон: ${phone}
+    Вид десерта: ${dessert}
+    Комментарии: ${comments}
     `;
 
     navigator.clipboard.writeText(message).then(() => {
