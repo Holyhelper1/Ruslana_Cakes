@@ -4,7 +4,9 @@ body {
   font-family: $font-family-base;
   font-weight: 300;
   line-height: 1.75;
-  background-color: $main-color;
+  // background-color: #fef3f8;
+  background-color: $light;
+  color: $main-text-color;
 
 
 
@@ -32,14 +34,16 @@ input,
 textarea,
 svg * {
   transition-duration: $transition-duration;
+  font-family: $font-family-base;
 }
 
 a {
-  color: $light;
+  color: $main-text-color;
   text-decoration: none;
 
   &:hover {
-    color: rgb(255, 156, 172);
+    // color: $button-color;
+    color: $red-accent;
   }
 }
 
@@ -49,7 +53,8 @@ h3,
 h4,
 h5,
 h6 {
-  color: $light;
+  font-family: $font-family-bold;
+  color: $main-text-color;
 }
 
 img {
@@ -86,6 +91,34 @@ img {
 
   &:hover {
     background-color: $navy-blue;
+  }
+}
+
+.more-button {
+  width: 140px;
+  height: 40px;
+  font-size: 16px;
+  border: 2px solid $button-color;
+  border-radius: 23px;
+  background-color: transparent;
+
+  &:hover {
+    cursor: pointer;
+    background-color: $button-color;
+  }
+}
+
+.order-button {
+  width: 140px;
+  height: 40px;
+  font-size: 16px;
+  border: 2px solid $button-color;
+  border-radius: 23px;
+  background-color: $button-color;
+
+  &:hover {
+    cursor: pointer;
+    background-color: transparent;
   }
 }
 

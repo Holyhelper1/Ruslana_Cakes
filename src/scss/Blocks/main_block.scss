@@ -1,63 +1,41 @@
 @use "../variables" as *;
-@import url("https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&display=swap");
+
 .main {
   position: relative;
   display: flex;
-  top: -70px;
+  top: -111px;
   flex-direction: column;
-  align-items: center;
-  height: 1200px;
-  gap: 310px;
+  align-items: flex-start;
+  justify-content: center;
+  height: 749px;
+  padding-inline: 60px;
+  background: url("/src/assets/main-background.jpg") no-repeat center;
+  background-size: cover;
+ 
+  .main-title-container {
+    display: flex;
+    flex-direction: column;
+    width: 760px;
+    font-family: $font-family-bold;
+    margin-top: -80px;
 
-  &::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    background: url("/src/assets/Why-Focal-Length-in-Food-Photogr.jpg")
-      no-repeat center;
-  }
-  &::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    background-color: rgba(47, 65, 87, 0.37);
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-  }
-
-  .main-logo {
-    padding-top: 50px;
-    padding-bottom: 250px;
-    width: 40%;
-  }
-
-  .main-button {
-    font-weight: 600;
-    font-family: "Roboto", sans-serif;
-    font-size: 1rem;
-    line-height: 1rem;
-    text-align: center;
-    color: $navy-blue;
-    border: 2px solid $navy-blue;
-    width: 154px;
-    height: 53px;
-    background-color: transparent;
-    text-transform: uppercase;
-    cursor: pointer;
-
-    &:hover {
-      background-color: $navy-blue;
-      color: #fff;
+    .main-title {
+      font-size: 2.74vw;
+      text-transform: uppercase;
+      color: $main-text-color;
+      // line-height: 1.1;
     }
-  }
-
-  .main-description {
-    height: 200px;
+    .main-description {
+      font-size: 4.3vw;
+      color: $main-text-color;
+      font-weight: bold;
+      text-transform: uppercase;     
+      line-height: 1.1;
+    }
+    .main-description-text {
+      font-size: 1.24vw;
+      // line-height: 1.1;
+    }
   }
 }
 
@@ -67,21 +45,17 @@
   }
 
   .main-button {
-    margin-top:  -250px;
+    margin-top: -250px;
   }
-
 }
 
-@media screen and (max-width: 1220px) {
+@media screen and (max-width: 1280px) {
   .main {
-    gap: 100px;
 
-    .main-logo {
-      margin-top: 20px;
-    }
-
-    .main-button {
-      margin-top:  0;
+    .main-title-container {
+      display: flex;
+      flex-direction: column;
+      width: 520px;
     }
   }
 }
@@ -89,9 +63,20 @@
 @media screen and (max-width: 768px) {
   .main {
     top: -200px;
+    align-items: center;
 
     .main-logo {
       margin-top: 210px;
+    }
+
+    .main-title-container {
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+    }
+    .main-description {
+      text-align: center;
+      align-items: center;
     }
   }
 }

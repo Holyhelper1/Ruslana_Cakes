@@ -1,78 +1,51 @@
 @use "../variables" as *;
 @import url("https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&display=swap");
 .catalog-container {
+  position: relative;
+  top: -141px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-  background-color: #fdfcfb;
+  background-color: #fef3f8;
+  padding-top: 60px;
   padding-bottom: 40px;
+  padding-inline: 60px;
 
   .catalog-list {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 512px;
+    width: 472px;
 
     .catalog-list-title {
-      font-family: "Bodoni Moda", sans-serif;
-      font-weight: 500;
-      font-size: 40px;
-      margin-bottom: 18px;
+      font-family: $font-family-bold;
+      font-weight: 700;
+      font-size: clamp(20px, 2.35vw, 30px);
+      line-height: 120%;
+      text-transform: uppercase;
       text-align: center;
-      color: $navy-blue;
+      color: #412540;
+      margin-bottom: 60px;
     }
 
-    .catalog-list-items {
-      display: flex;
-      justify-content: space-between;
-      width: 100%;
-      height: 39px;
-      margin-bottom: 42px;
-
-      .catalog-list-item {
-        position: relative;
-        padding: 10px;
-        font-size: 16px;
-        font-weight: bold;
-        text-align: center;
-        border: 2px solid transparent;
-        color: #000;
-        cursor: pointer;
-      }
-      
-      .catalog-list-item::after {
-        content: "";
-        position: absolute;
-        left: 50%;
-        bottom: -6%;
-        width: 100%;
-        height: 2px;
-        background-color: $red-accent;
-        transform: translateX(-50%) scaleX(0);
-        transition: transform 0.3s ease;
-      }
-
-      .catalog-list-item:hover::after {
-        transform: translateX(-50%) scaleX(1);
-        cursor: pointer;
-      }
-    }
   }
 
   .catalog-cards-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    row-gap: 60px;
-    column-gap: 32px;
-    max-width: 1100px;
+   display: flex;
+   flex-direction: column;
+    // background-color: #412540;
+    width: 100%;
+    gap: 30px;
 
     .catalog-cards {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       grid-template-rows: repeat(2, auto);
       column-gap: 32px;
-      row-gap: 60px;
+      row-gap: 30px;
       width: 100%;
+      // background-color: aquamarine;
     }
 
     .catalog-cards-top {
@@ -93,24 +66,41 @@
   }
 }
 
-@media screen and (max-width: 1150px) {
+@media screen and (max-width: 1200px) {
+  .catalog-container {
+    padding-inline: 30px !important;
   .catalog-cards-container {
     padding: 15px;
     column-gap: 15px !important;
-    row-gap: 30px !important;
+    row-gap: 15px !important;
 
     .catalog-cards {
       column-gap: 15px !important;
-      row-gap: 30px !important;
+      row-gap: 15px !important;
     }
   }
+
+}
+}
+
+@media screen and (max-width: 1100px) {
+  .catalog-cards {
+    grid-template-columns: repeat(1, 1fr) !important;
+  }
+
+
 }
 @media (max-width: 768px) {
   .catalog-container {
     margin-top: -170px;
+
+    .catalog-list-title {
+      margin-bottom: 30px !important;
+    }
   }
   .catalog-cards-container {
-    grid-template-columns: repeat(1, 1fr) !important;
+    display: flex ;
+    flex-direction: column ;
 
     .catalog-cards-top {
       margin-top: 40px;
@@ -127,7 +117,7 @@
   }
 
   .catalog-cards-container {
-    margin-top: 70px;
+    // margin-top: 70px;
 
     .catalog-list-item .active {
       width: 60% !important;
