@@ -20,20 +20,21 @@
     margin-top: -80px;
 
     .main-title {
-      font-size: 2.74vw;
+      font-size: clamp(17px, 2.74vw, 35px);
       text-transform: uppercase;
       color: $main-text-color;
       // line-height: 1.1;
     }
     .main-description {
-      font-size: 4.3vw;
+      font-size: clamp(27px, 4.30vw, 55px);
       color: $main-text-color;
       font-weight: bold;
       text-transform: uppercase;     
       line-height: 1.1;
     }
     .main-description-text {
-      font-size: 1.24vw;
+      font-family: $font-family-base;
+      font-size: clamp(16px, 1.24vw, 18px);
       // line-height: 1.1;
     }
   }
@@ -77,6 +78,10 @@
     .main-description {
       text-align: center;
       align-items: center;
+    }
+
+    .main-description-text {
+      text-align: center;
     }
   }
 }

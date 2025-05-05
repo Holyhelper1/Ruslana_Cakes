@@ -16,5 +16,9 @@ service cloud.firestore {
       allow read: if true; 
       allow write: if true; 
     }
+ 		match /meringue/{meringueId} {
+      allow read: if true; 
+      allow write: if true; 
+    }
   }
 }

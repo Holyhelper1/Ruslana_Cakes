@@ -172,3 +172,25 @@ input[type="number"] {
   border-bottom: 2px solid $red-accent !important;
 }
 
+
+.page-builder-bottom-info-list {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.8;
+
+  .page-builder-bottom-info-list-item:not(:first-child) {
+    position: relative;
+
+    &:before {
+      position: absolute;
+      content: "";
+      top: 30%;
+      left: -12px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: $main-text-color;
+    }
+  }
+}
+

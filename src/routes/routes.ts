@@ -1,6 +1,6 @@
 import { Main } from "../Components/Main/main-page";
 import { NotFound } from "../Components/NotFound/NotFound";
-import { BentoPlusCupcakes } from "../Components/Pages/Bento-plus-cupcakes/Meringue";
+import { BentoPlusCupcakes } from "../Components/Pages/Bento-plus-cupcakes/BentoPlusCupcakes";
 import { Bento } from "../Components/Pages/Bento/Bento";
 import { Cakes } from "../Components/Pages/Cakes/Cakes";
 import { Cupcakes } from "../Components/Pages/Cupcakes/Cupcakes";

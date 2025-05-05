@@ -3,9 +3,11 @@ import { CakeCard } from "./Cake-card/Cake-card";
 import {
   ICake,
   IFirestoreDocument,
+  useFetchBentoPlusQuery,
   useFetchBentoQuery,
   useFetchCakesQuery,
   useFetchCupcakesQuery,
+  useFetchMeringueQuery,
 } from "../../Slices/firebase-api-slice";
 
 enum DessertType {
@@ -16,15 +18,11 @@ enum DessertType {
 }
 
 export const Catalog = () => {
-  // const [activeItem, setActiveItem] = useState<string>("");
-  // const [selectedCategory, setSelectedCategory] = useState<
-  //   "cakes" | "bento" | "cupcake"
-  // >("cakes");
-  const [topSellers, setTopSellers] = useState<number>(3);
   const [currentCake, setCurrentCake] = useState<ICake[]>([]);
   const [currentBento, setCurrentBento] = useState<ICake[]>([]);
   const [currentCupcake, setCurrentCupcake] = useState<ICake[]>([]);
-  // const [currentDessert, setCurrentDessert] = useState<ICake[]>([]);
+  const [currentMeringue, setCurrentMeringue] = useState<ICake[]>([]);
+  const [currentBentoPlus, setCurrentBentoPlus] = useState<ICake[]>([]);
   const [nowFetching, setNowFetching] = useState<boolean>(false);
   const [error, setError] = useState<string>("");
 
@@ -33,7 +31,7 @@ export const Catalog = () => {
     isFetching: cakesFetching,
     error: cakesError,
   } = useFetchCakesQuery();
-  
+
   const {
     data: bento,
     isFetching: bentoFetching,
@@ -44,6 +42,16 @@ export const Catalog = () => {
     isFetching: cupcakesFetching,
     error: cupcakesError,
   } = useFetchCupcakesQuery();
+  const {
+    data: meringue,
+    isFetching: meringueFetching,
+    error: meringueError,
+  } = useFetchMeringueQuery();
+  const {
+    data: bentoPlus,
+    isFetching: bentoPlusFetching,
+    error: bentoPlusError,
+  } = useFetchBentoPlusQuery();
 
   useEffect(() => {
     let documents: IFirestoreDocument[] = [];
@@ -62,10 +70,17 @@ export const Catalog = () => {
       handleFetchError(cupcakesError, "капкейков");
       setNowFetching(false);
       return;
+    } else if (meringueError) {
+      handleFetchError(meringueError, "Меренги");
+      setNowFetching(false);
+      return;
+    } else if (bentoPlusError) {
+      handleFetchError(bentoPlusError, "Бенто+капкейков");
+      setNowFetching(false);
+      return;
     }
 
     if (cakes !== null) {
-    // if (selectedCategory === "cakes") {
       documents = Array.isArray(cakes?.documents) ? cakes.documents : [];
       setNowFetching(cakesFetching);
 
@@ -76,7 +91,8 @@ export const Catalog = () => {
         Price: doc.fields.Price.integerValue,
       }));
       setCurrentCake(updatedDesserts);
-    } if (bento !== null) {
+    }
+    if (bento !== null) {
       documents = Array.isArray(bento?.documents) ? bento.documents : [];
       setNowFetching(bentoFetching);
 
@@ -88,7 +104,9 @@ export const Catalog = () => {
       }));
 
       setCurrentBento(updatedDesserts);
-    } if (cupcakes !== null) {
+    }
+
+    if (cupcakes !== null) {
       documents = Array.isArray(cupcakes?.documents) ? cupcakes.documents : [];
       setNowFetching(cupcakesFetching);
 
@@ -102,32 +120,49 @@ export const Catalog = () => {
       setCurrentCupcake(updatedDesserts);
       setNowFetching(false);
     }
+    if (meringue !== null) {
+      documents = Array.isArray(meringue?.documents) ? meringue.documents : [];
+      setNowFetching(meringueFetching);
 
-    // const updatedDesserts = documents.map((doc) => ({
-    //   id: doc.name,
-    //   Image: doc.fields.Image.stringValue,
-    //   Description: doc.fields.Description.stringValue,
-    //   Price: doc.fields.Price.integerValue,
-    // }));
+      const updatedDesserts = documents.map((doc) => ({
+        id: doc.name,
+        Image: doc.fields.Image.stringValue,
+        Description: doc.fields.Description.stringValue,
+        Price: doc.fields.Price.integerValue,
+      }));
 
-    // setCurrentDessert(updatedDesserts);
+      setCurrentMeringue(updatedDesserts);
+      setNowFetching(false);
+    }
+    if (bentoPlus !== null) {
+      documents = Array.isArray(bentoPlus?.documents) ? bentoPlus.documents : [];
+      setNowFetching(bentoPlusFetching);
+
+      const updatedDesserts = documents.map((doc) => ({
+        id: doc.name,
+        Image: doc.fields.Image.stringValue,
+        Description: doc.fields.Description.stringValue,
+        Price: doc.fields.Price.integerValue,
+      }));
+
+      setCurrentBentoPlus(updatedDesserts);
+      setNowFetching(false);
+    }
+
   }, [
-    // selectedCategory,
     cakes,
     bento,
     cupcakes,
+    meringue,
     cakesFetching,
     bentoFetching,
     cupcakesFetching,
+    meringueFetching,
     cakesError,
     bentoError,
     cupcakesError,
+    meringueError,
   ]);
-
-  console.log("currentCake - ", currentCake);
-  console.log("currentCake - ", Math.floor(Math.random() * currentCake.length));
-  // console.log("currentDessert - ", currentDessert[0]);
-  
 
   const handleFetchError = (error: any, type: string) => {
     if ("status" in error) {
@@ -141,75 +176,42 @@ export const Catalog = () => {
         `Ошибка при загрузке ${type}: ${error.message || "Неизвестная ошибка"}`
       );
     }
-  };
-
-  // useEffect(() => {
-  //   const updateTopSellers = () => {
-  //     if (selectedCategory === "cakes" && cakes !== null) {
-  //       setTopSellers(3);
-  //     } else if (selectedCategory === "bento" && bento !== null) {
-  //       setTopSellers(1);
-  //     } else if (selectedCategory === "cupcake" && cupcakes !== null) {
-  //       setTopSellers(0);
-  //     }
-  //   };
-
-  //   updateTopSellers();
-  // }, [selectedCategory, cakes, bento, cupcakes]);
-
-  // const handleCategoryChange = (category: "cakes" | "bento" | "cupcake") => {
-  //   setSelectedCategory(category);
-  //   setActiveItem(category);
-  // };
+  };  
 
   if (nowFetching) return <div>Загрузка...</div>;
-
   return (
     <div className="catalog-container" id="catalog">
       <div className="catalog-list">
-        <h2 className="catalog-list-title">Превращаю ваши желания в нежные десерты</h2>
-        {/* <ul className="catalog-list-items">
-          <li
-            className={`catalog-list-item ${
-              activeItem === "cakes" ? "active" : ""
-            }`}
-            onClick={() => handleCategoryChange("cakes")}
-          >
-            Торты
-          </li>
-          <li
-            className={`catalog-list-item ${
-              activeItem === "bento" ? "active" : ""
-            }`}
-            onClick={() => handleCategoryChange("bento")}
-          >
-            Бенто торты
-          </li>
-          <li
-            className={`catalog-list-item ${
-              activeItem === "cupcake" ? "active" : ""
-            }`}
-            onClick={() => handleCategoryChange("cupcake")}
-          >
-            Капкейки
-          </li>
-        </ul> */}
+        <h2 className="catalog-list-title">
+          Превращаю ваши желания в нежные десерты
+        </h2>
+       
       </div>
       {error && <p>{error}</p>}
       <div className="catalog-cards-container">
         <div className="catalog-cards">
-
-          <CakeCard cake={currentCake[Math.floor(Math.random() * currentCake.length)]} typeOfDessert={DessertType.cakes}/>
-          <CakeCard cake={currentCupcake[Math.floor(Math.random() * currentCupcake.length)]} typeOfDessert={DessertType.cupcakes}/>
-          <CakeCard cake={currentBento[Math.floor(Math.random() * currentBento.length)]} typeOfDessert={DessertType.bento}/>
-          <CakeCard cake={currentCake[topSellers]} typeOfDessert="Меренговый рулет"/>
-
+          <CakeCard
+            cake={currentCake[Math.floor(Math.random() * currentCake.length)]}
+            typeOfDessert={DessertType.cakes}
+          />
+          <CakeCard
+            cake={
+              currentCupcake[Math.floor(Math.random() * currentCupcake.length)]
+            }
+            typeOfDessert={DessertType.cupcakes}
+          />
+          <CakeCard
+            cake={currentBento[Math.floor(Math.random() * currentBento.length)]}
+            typeOfDessert={DessertType.bento}
+          />
+          <CakeCard
+            cake={currentMeringue[Math.floor(Math.random() * 2)]}
+            typeOfDessert="Меренговый рулет"
+          />
         </div>
 
         <div className="catalog-cards-wide">
-
-          <CakeCard cake={currentCupcake[0]} typeOfDessert="Бенто+Капкейки"/>
-
+          <CakeCard cake={currentBentoPlus[0]} typeOfDessert="Бенто+Капкейки" />
         </div>
 
         {/* <div className="catalog-cards">
@@ -225,9 +227,6 @@ export const Catalog = () => {
             <CakeCard cake={currentDessert[topSellers]} />
           )}
         </div> */}
-
-
-
       </div>
     </div>
   );

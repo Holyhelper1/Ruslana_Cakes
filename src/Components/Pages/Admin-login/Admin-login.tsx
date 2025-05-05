@@ -8,6 +8,7 @@ import { auth } from "../../../firebase";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
 import { login } from "../../../Slices/authSlice";
+import { Footer } from "../../Footer/Footer";
 
 export const AdminLogin: React.FC = () => {
   const [email, setEmail] = useState("");
@@ -40,6 +41,8 @@ export const AdminLogin: React.FC = () => {
   };
 
    return (
+    <>
+    
     <div className="admin-login-container">
       {error && <p style={{ color: "red", textAlign: 'center' }}>{error}</p>}
       <div className="admin-header"></div>
@@ -75,6 +78,8 @@ export const AdminLogin: React.FC = () => {
       </div>
       
     </div>
+    <Footer />
+    </>
   );
   
 };
