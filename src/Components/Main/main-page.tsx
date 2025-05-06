@@ -1,6 +1,7 @@
 
 import { Catalog } from "../Catalog/Catalog";
 import { Footer } from "../Footer/Footer";
+import { HowToOrder } from "../HowToOrder/HowToOrder";
 import { Location } from "../Location/Location";
 export const Main: React.FC = () => {
   return (
@@ -14,6 +15,7 @@ export const Main: React.FC = () => {
         </div>
       </main>
       <Catalog />
+      <HowToOrder/>
       <Location />
       <Footer />
     </>

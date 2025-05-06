@@ -8,8 +8,6 @@ body {
   background-color: $light;
   color: $main-text-color;
 
-
-
   &::-webkit-scrollbar {
     width: 10px;
   }
@@ -172,7 +170,6 @@ input[type="number"] {
   border-bottom: 2px solid $red-accent !important;
 }
 
-
 .page-builder-bottom-info-list {
   font-weight: 400;
   font-size: 14px;
@@ -194,3 +191,41 @@ input[type="number"] {
   }
 }
 
+.mini-container {
+  width: 264px;
+  height: 174px;
+  padding-inline: 15px;
+  padding-block: 20px;
+  border: 2px solid $main-color;
+  border-radius: 20px;
+  box-sizing: border-box;
+  font-size: 14px;
+  line-height: 120%;
+  h4 {
+    font-size: 16px;
+    padding-bottom: 12px;
+  }
+}
+.mini-container-fill {
+  width: 267px;
+  height: 141px;
+  padding: 20px;
+  background-color: $main-color;
+  border-radius: 20px;
+  box-sizing: border-box;
+  font-size: 14px;
+  line-height: 120%;
+  h4 {
+    font-size: 16px;
+    padding-bottom: 12px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .mini-container {
+    width: 100%;
+  }
+  .mini-container-fill {
+    width: 100%;
+    }
+}
