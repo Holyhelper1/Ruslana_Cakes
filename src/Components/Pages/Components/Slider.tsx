@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { ICakeImage } from "../Cakes/Cakes";
+import { IFeedbackImages } from "../../Feedback/feedback-db";
 
-export const Slider = ({ images }: { images: ICakeImage[] }) => {
+export const Slider = ({ images }: { images: ICakeImage[] | IFeedbackImages[] }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [touchStartX, setTouchStartX] = useState<number | null>(null);
   const [touchEndX, setTouchEndX] = useState<number | null>(null);

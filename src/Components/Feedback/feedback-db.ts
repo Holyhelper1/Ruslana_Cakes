@@ -9,7 +9,7 @@ import feedback8 from "/src/assets/Feedback/feedback8.png";
 import feedback9 from "/src/assets/Feedback/feedback9.png";
 import feedback10 from "/src/assets/Feedback/feedback10.png";
 
-interface IFeedbackImages {
+export interface IFeedbackImages {
   id: number;
   Image: string;
 }
