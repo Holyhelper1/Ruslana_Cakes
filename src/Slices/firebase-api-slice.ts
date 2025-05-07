@@ -76,6 +76,16 @@ export const firebaseApiSlice = createApi({
           return "cupcake";
         },
       }),
+      fetchMeringue: builder.query<ICakesResponse, void>({
+        query() {
+          return "meringue";
+        },
+      }),
+      fetchBentoPlus: builder.query<ICakesResponse, void>({
+        query() {
+          return "bento_plus";
+        },
+      }),
       createCake: builder.mutation<ICake, Partial<ICake>>({
         query(cake) {
           return {
@@ -100,6 +110,15 @@ export const firebaseApiSlice = createApi({
             url: "cupcake",
             method: "POST",
             body: { ...cupcake },
+          };
+        },
+      }),
+      createMeringue: builder.mutation<ICake, Partial<ICake> & { id: string }>({
+        query(meringue) {
+          return {
+            url: "meringue",
+            method: "POST",
+            body: { ...meringue },
           };
         },
       }),
@@ -141,6 +160,18 @@ export const firebaseApiSlice = createApi({
           };
         },
       }),
+      updateMeringue: builder.mutation<
+        ICake,
+        { id: string; fields: IFirestoreDocument["fields"] }
+      >({
+        query({ id, fields }) {
+          return {
+            url: `meringue/${id}`,
+            method: "PATCH",
+            body: { fields },
+          };
+        },
+      }),
       deleteCake: builder.mutation<void, string>({
         query(id) {
           return {
@@ -165,6 +196,14 @@ export const firebaseApiSlice = createApi({
           };
         },
       }),
+      deleteMeringue: builder.mutation<void, string>({
+        query(id) {
+          return {
+            url: `meringue/${id}`,
+            method: "DELETE",
+          };
+        },
+      }),
     };
   },
 });
@@ -173,13 +212,18 @@ export const {
   useFetchCakesQuery,
   useFetchBentoQuery,
   useFetchCupcakesQuery,
+  useFetchMeringueQuery,
+  useFetchBentoPlusQuery,
   useUpdateCakeMutation,
   useUpdateBentoMutation,
   useUpdateCupcakeMutation,
+  useUpdateMeringueMutation,
   useCreateCakeMutation,
   useCreateBentoMutation,
   useCreateCupcakeMutation,
+  useCreateMeringueMutation,
   useDeleteCakeMutation,
   useDeleteBentoMutation,
   useDeleteCupcakeMutation,
+  useDeleteMeringueMutation,
 } = firebaseApiSlice;

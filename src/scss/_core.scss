@@ -4,9 +4,7 @@ body {
   font-family: $font-family-base;
   font-weight: 300;
   line-height: 1.75;
-  background-color: $main-color;
-
-
+  color: $main-text-color;
 
   &::-webkit-scrollbar {
     width: 10px;
@@ -32,14 +30,16 @@ input,
 textarea,
 svg * {
   transition-duration: $transition-duration;
+  font-family: $font-family-base;
 }
 
 a {
-  color: $light;
+  color: $main-text-color;
   text-decoration: none;
 
   &:hover {
-    color: rgb(255, 156, 172);
+    // color: $button-color;
+    color: $red-accent;
   }
 }
 
@@ -49,7 +49,8 @@ h3,
 h4,
 h5,
 h6 {
-  color: $light;
+  font-family: $font-family-bold;
+  color: $main-text-color;
 }
 
 img {
@@ -86,6 +87,39 @@ img {
 
   &:hover {
     background-color: $navy-blue;
+  }
+}
+
+.more-button {
+  width: 140px;
+  height: 40px;
+  font-size: 16px;
+  color: $main-text-color;
+  border: 2px solid $button-color;
+  border-radius: 23px;
+  background-color: transparent;
+
+  &:hover {
+    cursor: pointer;
+    // background-color: $button-color;
+    border-color: $main-text-color;
+  }
+}
+
+.order-button {
+  width: 140px;
+  height: 40px;
+  font-size: 16px;
+  color: $main-text-color;
+  border: 2px solid $button-color;
+  border-radius: 23px;
+  background-color: $button-color;
+
+  &:hover {
+    cursor: pointer;
+    background-color: $main-text-color;
+    color: #fff;
+    border-color: $main-text-color;
   }
 }
 
@@ -139,3 +173,62 @@ input[type="number"] {
   border-bottom: 2px solid $red-accent !important;
 }
 
+.page-builder-bottom-info-list {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.8;
+
+  .page-builder-bottom-info-list-item:not(:first-child) {
+    position: relative;
+
+    &:before {
+      position: absolute;
+      content: "";
+      top: 30%;
+      left: -12px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: $main-text-color;
+    }
+  }
+}
+
+.mini-container {
+  width: 264px;
+  height: 174px;
+  padding-inline: 15px;
+  padding-block: 20px;
+  border: 2px solid $main-color;
+  border-radius: 20px;
+  box-sizing: border-box;
+  font-size: 14px;
+  line-height: 120%;
+  h4 {
+    font-size: 16px;
+    padding-bottom: 12px;
+  }
+}
+.mini-container-fill {
+  width: 267px;
+  height: 141px;
+  padding: 20px;
+  background-color: $main-color;
+  border-radius: 20px;
+  box-sizing: border-box;
+  font-size: 14px;
+  line-height: 120%;
+  h4 {
+    font-size: 16px;
+    padding-bottom: 12px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .mini-container {
+    width: 100%;
+  }
+  .mini-container-fill {
+    width: 100%;
+    }
+}

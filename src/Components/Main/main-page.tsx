@@ -1,22 +1,25 @@
-import { useState } from "react";
-import main_logo from "../../assets/2 logo Ruslana Cakes.png";
-import { Modal } from "../Modal/Modal";
+
+import { About } from "../About/About";
 import { Catalog } from "../Catalog/Catalog";
-import { Location } from "../Location/Location";
+import { Feedback } from "../Feedback/Feedback";
+import { HowToOrder } from "../HowToOrder/HowToOrder";
+import { MainFooter } from "./Main-footer/Main-footer";
 export const Main: React.FC = () => {
-  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   return (
     <>
       <main className="main">
         <h1 className="visually-hidden">Торты на заказ в Нижнем Новгороде</h1>
-        <img className="main-logo" src={main_logo} alt="Ruslana cakes" />
-        <button className="main-button" onClick={() => setIsModalOpen(true)}>
-          Сделать заказ
-        </button>
-        {isModalOpen && <Modal onClose={() => setIsModalOpen(false)} />}
+        <div className="main-title-container">
+          <h2 className="main-title">Кондитерские шедевры</h2>
+          <p className="main-description">ручной работы с любовью</p>
+          <p className="main-description-text">Десерты на заказ в Нижнем Новгороде</p>
+        </div>
       </main>
       <Catalog />
-      <Location />
+      <HowToOrder/>
+      <About/>
+      <Feedback/>
+      <MainFooter/>
     </>
   );
 };

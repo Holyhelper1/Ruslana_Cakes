@@ -3,6 +3,7 @@ import logo from "../../assets/logo_text_light.png";
 import { scrollToSection } from "../../Utils/scroll";
 import { SocialLinks } from "../social_links/social_links";
 import { Modal } from "../Modal/Modal";
+import { WeatherBlock } from "../weather-block/weather-block";
 export const Footer = () => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
@@ -28,6 +29,7 @@ export const Footer = () => {
 
       </div>
         <div className="footer-container-down">
+      <WeatherBlock/>
           <div className="footer-empty"></div>
           <div className="footer-social-links"><SocialLinks /></div>
         </div>
