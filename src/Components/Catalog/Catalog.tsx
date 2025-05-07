@@ -135,7 +135,9 @@ export const Catalog = () => {
       setNowFetching(false);
     }
     if (bentoPlus !== null) {
-      documents = Array.isArray(bentoPlus?.documents) ? bentoPlus.documents : [];
+      documents = Array.isArray(bentoPlus?.documents)
+        ? bentoPlus.documents
+        : [];
       setNowFetching(bentoPlusFetching);
 
       const updatedDesserts = documents.map((doc) => ({
@@ -148,7 +150,6 @@ export const Catalog = () => {
       setCurrentBentoPlus(updatedDesserts);
       setNowFetching(false);
     }
-
   }, [
     cakes,
     bento,
@@ -176,7 +177,7 @@ export const Catalog = () => {
         `Ошибка при загрузке ${type}: ${error.message || "Неизвестная ошибка"}`
       );
     }
-  };  
+  };
 
   if (nowFetching) return <div>Загрузка...</div>;
   return (
@@ -185,7 +186,6 @@ export const Catalog = () => {
         <h2 className="catalog-list-title">
           Превращаю ваши желания в нежные десерты
         </h2>
-       
       </div>
       {error && <p>{error}</p>}
       <div className="catalog-cards-container">

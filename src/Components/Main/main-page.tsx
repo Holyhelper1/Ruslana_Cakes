@@ -1,8 +1,9 @@
 
+import { About } from "../About/About";
 import { Catalog } from "../Catalog/Catalog";
-import { Footer } from "../Footer/Footer";
+import { Feedback } from "../Feedback/Feedback";
 import { HowToOrder } from "../HowToOrder/HowToOrder";
-import { Location } from "../Location/Location";
+import { MainFooter } from "./Main-footer/Main-footer";
 export const Main: React.FC = () => {
   return (
     <>
@@ -16,8 +17,9 @@ export const Main: React.FC = () => {
       </main>
       <Catalog />
       <HowToOrder/>
-      <Location />
-      <Footer />
+      <About/>
+      <Feedback/>
+      <MainFooter/>
     </>
   );
 };

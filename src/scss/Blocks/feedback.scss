@@ -1,0 +1,38 @@
+@use "../variables" as *;
+.feedback-container {
+  position: relative;
+  top: -141px;
+  display: flex;
+  flex-direction: column;
+  padding-top: 70px;
+  padding-inline: 60px;
+  color: $main-text-color;
+
+  .feedback-container-title {
+    font-size: clamp(22px, 2.35vw, 30px);
+    line-height: 100%;
+    text-transform: uppercase;
+    text-align: center;
+    padding-bottom: 30px;
+  }
+
+  .feedback-container-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 25px;
+
+    // .feedback-container-content-item {
+        
+    // }
+  }
+}
+
+
+@media screen and (max-width: 700px) {
+.feedback-container-content-item {
+       display: none; 
+    }
+
+}

@@ -4,13 +4,14 @@
   position: relative;
   top: -141px;
   background-color: #fff;
-  padding: 60px;
+  padding-inline: 60px;
+  padding-top: 68px;
+  padding-bottom: 75px;
 
   .how-to-order-container-tittle {
-    font-weight: 700;
     font-size: clamp(22px, 2.35vw, 30px);
     line-height: 100%;
-    padding-bottom: 80px;
+    padding-bottom: 85px;
     text-transform: uppercase;
     text-align: center;
     color: $main-text-color;
@@ -19,7 +20,7 @@
   .how-to-order-info-wrapper {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-around;
     gap: 30px;
 
     .how-to-order-info-left-side {

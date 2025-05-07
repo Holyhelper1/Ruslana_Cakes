@@ -69,7 +69,6 @@ body {
   font-family: "inglobal", sans-serif;
   font-weight: 300;
   line-height: 1.75;
-  background-color: #FDFCFB;
   color: #412540;
 }
 body::-webkit-scrollbar {
@@ -152,26 +151,30 @@ img {
   width: 140px;
   height: 40px;
   font-size: 16px;
+  color: #412540;
   border: 2px solid #fbddec;
   border-radius: 23px;
   background-color: transparent;
 }
 .more-button:hover {
   cursor: pointer;
-  background-color: #fbddec;
+  border-color: #412540;
 }
 
 .order-button {
   width: 140px;
   height: 40px;
   font-size: 16px;
+  color: #412540;
   border: 2px solid #fbddec;
   border-radius: 23px;
   background-color: #fbddec;
 }
 .order-button:hover {
   cursor: pointer;
-  background-color: transparent;
+  background-color: #412540;
+  color: #fff;
+  border-color: #412540;
 }
 
 .visually-hidden {
@@ -1279,10 +1282,6 @@ input[type=number] {
     height: 200px !important;
   }
 }
-.cakes-container {
-  color: #412540;
-}
-
 .page-builder-wrapper {
   display: flex;
   flex-direction: column;
@@ -1686,13 +1685,14 @@ input[type=number] {
   position: relative;
   top: -141px;
   background-color: #fff;
-  padding: 60px;
+  padding-inline: 60px;
+  padding-top: 68px;
+  padding-bottom: 75px;
 }
 .how-to-order-container .how-to-order-container-tittle {
-  font-weight: 700;
   font-size: clamp(22px, 2.35vw, 30px);
   line-height: 100%;
-  padding-bottom: 80px;
+  padding-bottom: 85px;
   text-transform: uppercase;
   text-align: center;
   color: #412540;
@@ -1700,7 +1700,7 @@ input[type=number] {
 .how-to-order-container .how-to-order-info-wrapper {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-around;
   gap: 30px;
 }
 .how-to-order-container .how-to-order-info-wrapper .how-to-order-info-left-side {
@@ -1949,6 +1949,192 @@ input[type=number] {
     top: -5% !important;
     width: 36px !important;
     height: 36px !important;
+  }
+}
+.about-container {
+  position: relative;
+  top: -141px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #fef3f8;
+  padding-top: 58px;
+  padding-bottom: 60px;
+  padding-inline: 60px;
+}
+.about-container .about-tittle {
+  font-size: clamp(22px, 2.35vw, 30px);
+  text-transform: uppercase;
+  text-align: center;
+  padding-bottom: 25px;
+}
+.about-container .about-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  gap: 30px;
+}
+.about-container .about-content .about-content-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  gap: 30px;
+}
+.about-container .about-content .about-content-wrapper .about-text-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 490px;
+  box-sizing: border-box;
+}
+.about-container .about-content .about-content-wrapper .about-text-container p {
+  font-size: 14px;
+  line-height: 120%;
+}
+.about-container .about-content .about-content-wrapper .about-text-container .about-text-last-tittle {
+  font-family: "inglobal-bold", sans-serif;
+  font-size: 21px;
+  line-height: 100%;
+}
+.about-container .about-content .about-image-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 30px;
+}
+.about-container .about-content .about-image-container .about-image-cake-container {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap: 15px;
+}
+.about-container .about-content .about-image-container .about-image-cake-container a {
+  padding-top: 15px;
+}
+.about-container .about-content .about-image-container .about-image-cake-container a button {
+  background-color: #FFF;
+}
+
+@media screen and (min-width: 1300px) {
+  .about-content-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around !important;
+  }
+}
+@media screen and (max-width: 1000px) {
+  .about-content {
+    flex-direction: column !important;
+  }
+  .about-content-wrapper {
+    flex-direction: column-reverse !important;
+    align-items: center;
+  }
+  .about-content-wrapper .about-text-container {
+    width: 100% !important;
+  }
+  .about-image-container {
+    align-items: center;
+  }
+}
+@media screen and (max-width: 600px) {
+  .about-container {
+    padding: 40px 30px !important;
+  }
+}
+.main-footer-footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  background: url("/src/assets/Footer/Footer_background.jpg") no-repeat;
+  background-size: cover;
+  margin-top: -141px;
+  padding: 60px;
+  gap: 30px;
+}
+.main-footer-footer .main-footer-footer-tittle {
+  font-size: clamp(22px, 2.35vw, 30px);
+  line-height: 100%;
+  text-transform: uppercase;
+  text-align: center;
+}
+.main-footer-footer .main-footer-footer-logo {
+  width: 150px;
+}
+.main-footer-footer .main-footer-footer-social {
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+}
+.main-footer-footer .main-footer-footer-social img:hover {
+  transform: perspective(1000px) rotateY(360deg);
+  transition: 0.5s all ease-in-out;
+}
+
+@keyframes swing {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(-10deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+@media screen and (max-width: 700px) {
+  .main-footer-footer {
+    gap: 44px;
+    height: 100% !important;
+  }
+  .main-footer-footer .main-footer-footer-tittle-container {
+    flex-direction: column !important;
+    align-items: flex-end;
+    margin-top: 30px !important;
+  }
+  .main-footer-footer .main-footer-footer-tittle-container .main-footer-footer-tittle-text::before {
+    left: 20%;
+    width: 65px !important;
+    height: 15px !important;
+    background-size: contain !important;
+    rotate: 45deg;
+  }
+  .main-footer-footer .mobile-title {
+    display: unset !important;
+    padding-inline: 30px;
+  }
+}
+.feedback-container {
+  position: relative;
+  top: -141px;
+  display: flex;
+  flex-direction: column;
+  padding-top: 70px;
+  padding-inline: 60px;
+  color: #412540;
+}
+.feedback-container .feedback-container-title {
+  font-size: clamp(22px, 2.35vw, 30px);
+  line-height: 100%;
+  text-transform: uppercase;
+  text-align: center;
+  padding-bottom: 30px;
+}
+.feedback-container .feedback-container-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 25px;
+}
+
+@media screen and (max-width: 700px) {
+  .feedback-container-content-item {
+    display: none;
   }
 }
 

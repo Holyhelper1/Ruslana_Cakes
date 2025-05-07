@@ -79,7 +79,7 @@ export const HowToOrder = () => {
                     {dot} От 3-5 дней до нужной даты
                   </li>
                   <li className="how-to-order-info-step-list-item">
-                    {dot} Срочный заказ (1-2 дня) – +20% к стоимости
+                    {dot} Срочный заказ (1-2 дня) – <br></br> +20% к стоимости
                   </li>
                 </ul>
               </div>
