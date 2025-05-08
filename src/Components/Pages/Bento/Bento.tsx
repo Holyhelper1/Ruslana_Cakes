@@ -48,8 +48,8 @@ export const bentoCakeImages: ICakeImage[] = [
   { id: 4, Image: bento4, width: "268", height: "208" },
   { id: 5, Image: bento5, width: "268", height: "208" },
   { id: 6, Image: bento6, width: "268", height: "208" },
-  { id: 6, Image: bento7, width: "268", height: "208" },
-  { id: 6, Image: bento8, width: "268", height: "208" },
+  { id: 7, Image: bento7, width: "268", height: "208" },
+  { id: 8, Image: bento8, width: "268", height: "208" },
 ];
 export const Bento = () => {
   // const [currentData, setCurrentData] = useState<ICake[]>([]);

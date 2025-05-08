@@ -50,7 +50,6 @@ export const Slider = ({ images }: { images: ICakeImage[] | IFeedbackImages[] })
         <button onClick={nextSlide} className="slider-button"></button>
       </div>
       <div className="slider-controls">
-        {/* <button onClick={prevSlide} className="slider-button">◀</button> */}
         <div className="slider-indicators">
           {images.map((image, index) => (
             <button
@@ -62,7 +61,6 @@ export const Slider = ({ images }: { images: ICakeImage[] | IFeedbackImages[] })
             />
           ))}
         </div>
-        {/* <button onClick={nextSlide} className="slider-button">▶</button> */}
       </div>
     </div>
   );

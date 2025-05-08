@@ -31,18 +31,11 @@ export const About = () => {
               Готова воплотить ваши сладкие мечты <br></br> в реальность!
             </p>
           </div>
-          <img src={Avatar} alt="Avatar" 
-          // width={267} 
-          // height={370} 
-          />
+          <img src={Avatar} alt="Avatar" />
         </div>
         <div className="about-image-container">
-          {/* <img src={Avatar} alt="Avatar" width={267} height={370} /> */}
           <div className="about-image-cake-container">
-            <img src={aboutCake} alt="aboutCacke" 
-            // width={265} 
-            // height={250} 
-            />
+            <img src={aboutCake} alt="aboutCacke" />
             <p>
               Подписывайся в соцсетях – <br></br> @ruslanacakes
             </p>

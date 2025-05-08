@@ -1,3 +1,4 @@
+import { Location } from "../Components/Location/Location";
 import { Main } from "../Components/Main/main-page";
 import { NotFound } from "../Components/NotFound/NotFound";
 import { BentoPlusCupcakes } from "../Components/Pages/Bento-plus-cupcakes/BentoPlusCupcakes";
@@ -24,5 +25,6 @@ export const routes: RoutesArray = [
   { path: "/bento", component: Bento },
   { path: "/meringue", component: Meringue },
   { path: "/bento_plus_cupcakes", component: BentoPlusCupcakes },
+  { path: "/location", component: Location },
   {path: "*", component: NotFound},
 ];

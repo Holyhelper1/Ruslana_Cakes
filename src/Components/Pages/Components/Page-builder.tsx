@@ -1,11 +1,11 @@
 import logo from "../../../assets/Full-logo.svg";
-// import cake from "../../../assets/Cakes/page_cake.jpg";
 import Instagram from "../../../assets/Footer/icons/instagram.svg";
 import VK from "../../../assets/Footer/icons/VK.svg";
 import Telegram from "../../../assets/Footer/icons/Telegram.svg";
-import { Link } from "react-router";
+import { Link, useLocation } from "react-router";
 import { ICakeImage, IFlavors } from "../Cakes/Cakes";
 import { Slider } from "./Slider";
+import { scrollToSection } from "../../../Utils/scroll";
 
 export const PageBuilder = ({
   tittle,
@@ -30,11 +30,61 @@ export const PageBuilder = ({
   secondFlavors?: React.ReactNode;
   cakeImages?: ICakeImage[];
 }) => {
+  const { pathname } = useLocation();
+  // console.log(LinkType[tittle]);
+  // console.log('pathname', pathname);
 
   return (
     <div className="page-builder-wrapper">
       <div className="page-builder-container">
         <div className="page-builder-header"></div>
+        <ul className="page-builder-nav-list">
+          <Link to="/cakes">
+            <li
+              className={`page-builder-nav-list-item ${
+                pathname === "/cakes" ? "active" : ""
+              }`}
+            >
+              Торты
+            </li>
+          </Link>
+          <Link to="/cupcakes">
+            <li
+              className={`page-builder-nav-list-item ${
+                pathname === "/cupcakes" ? "active" : ""
+              }`}
+            >
+              Капкейки
+            </li>
+          </Link>
+          <Link to="/bento">
+            <li
+              className={`page-builder-nav-list-item ${
+                pathname === "/bento" ? "active" : ""
+              }`}
+            >
+              Бенто-торты
+            </li>
+          </Link>
+          <Link to="/meringue">
+            <li
+              className={`page-builder-nav-list-item ${
+                pathname === "/meringue" ? "active" : ""
+              }`}
+            >
+              Меренговый рулет
+            </li>
+          </Link>
+          <Link to="/bento_plus_cupcakes">
+            <li
+              className={`page-builder-nav-list-item ${
+                pathname === "/bento_plus_cupcakes" ? "active" : ""
+              }`}
+            >
+              Бенто+капкейки
+            </li>
+          </Link>
+        </ul>
         <h1 className="page-builder-title">{tittle}</h1>
         <div className="page-builder-content">
           <div className="page-builder-info-card">
@@ -94,7 +144,6 @@ export const PageBuilder = ({
                 alt="cake"
               />
             ))}
-
             <Slider images={cakeImages} />
           </div>
         </div>
@@ -109,7 +158,7 @@ export const PageBuilder = ({
           </a>
         </div>
         <h3 className="mobile-title">Создаю сладкие моменты с любовью</h3>
-        <Link to="/">
+        <Link to="/" onClick={() => scrollToSection("main")}>
           <img
             className="page-builder-footer-logo"
             src={logo}

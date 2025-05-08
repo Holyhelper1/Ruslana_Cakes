@@ -1,11 +1,4 @@
-import { useEffect, useState } from "react";
 import { PageBuilder } from "../Components/Page-builder";
-import {
-  ICake,
-  IFirestoreDocument,
-  useFetchBentoQuery,
-  useFetchCupcakesQuery,
-} from "../../../Slices/firebase-api-slice";
 import { IFlavors } from "../Cakes/Cakes";
 import { bentoCakeImages } from "../Bento/Bento";
 import { cupcakeCakeImages } from "../Cupcakes/Cupcakes";
@@ -59,40 +52,12 @@ const extraFlavors: IFlavors[] = [
   ];
 
 export const BentoPlusCupcakes = () => {
-  const [currentData, setCurrentData] = useState<ICake[]>([]);
   const title = "Набор “бенто + капкейки”";
   const secondTitle = "Бенто-торты";
   const cupcakesTitle = "Капкейки";
   const price = "";
 
-  const { data: bento } = useFetchBentoQuery();
-  const { data: cupcakes } = useFetchCupcakesQuery();
-
   const bentoPlusImages = bentoCakeImages.concat(cupcakeCakeImages)
-
-  useEffect(() => {
-    let documents: IFirestoreDocument[] = [];
-    let documentsTwo: IFirestoreDocument[] = [];
-
-    if (cupcakes) {
-      documents = Array.isArray(cupcakes.documents) ? cupcakes.documents : [];
-    }
-
-    if (bento) {
-      documentsTwo = Array.isArray(bento.documents) ? bento.documents : [];
-    }
-
-    const concatDocuments = [...documents, ...documentsTwo];
-
-    const updatedDesserts = concatDocuments.reverse().map((doc) => ({
-      id: doc.name,
-      Image: doc.fields.Image.stringValue,
-      Description: doc.fields.Description.stringValue,
-      Price: doc.fields.Price.integerValue,
-    }));
-
-    setCurrentData(updatedDesserts);
-  }, [cupcakes, bento]);
 
   const details: React.ReactNode = (
     <ul className="page-builder-bottom-info-list">
@@ -158,7 +123,7 @@ export const BentoPlusCupcakes = () => {
   return (
     <div className="bento-plus-cupcakes-container">
       <PageBuilder
-        data={currentData}
+        // data={currentData}
         secondTittle={secondTitle}
         price={price}
         tittle={title}

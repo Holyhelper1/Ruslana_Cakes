@@ -1,4 +1,4 @@
-import { feedbackImages } from "./feedback-db"
+import { feedbackImages } from "./feedback-db";
 import feedback1 from "/src/assets/Feedback/feedback1.png";
 import feedback2 from "/src/assets/Feedback/feedback2.png";
 import feedback3 from "/src/assets/Feedback/feedback3.png";

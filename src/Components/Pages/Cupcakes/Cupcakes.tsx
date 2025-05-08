@@ -1,9 +1,3 @@
-// import { useEffect, useState } from "react";
-// import {
-//   ICake,
-//   IFirestoreDocument,
-//   useFetchCupcakesQuery,
-// } from "../../../Slices/firebase-api-slice";
 import { PageBuilder } from "../Components/Page-builder";
 import { ICakeImage, IFlavors } from "../Cakes/Cakes";
 import cupcake1 from "/src/assets/Cupcakes/cards/cupcake1.png";
@@ -34,37 +28,18 @@ const flavors: IFlavors[] = [
 ];
 
 export const cupcakeCakeImages: ICakeImage[] = [
-  { id: 1, Image: cupcake1, width: "268", height: "192" },
-  { id: 2, Image: cupcake2, width: "268", height: "192" },
-  { id: 3, Image: cupcake3, width: "268", height: "192" },
-  { id: 4, Image: cupcake4, width: "268", height: "192" },
-  { id: 5, Image: cupcake5, width: "268", height: "192" },
-  { id: 6, Image: cupcake6, width: "268", height: "192" },
+  { id: 11, Image: cupcake1, width: "268", height: "192" },
+  { id: 12, Image: cupcake2, width: "268", height: "192" },
+  { id: 13, Image: cupcake3, width: "268", height: "192" },
+  { id: 14, Image: cupcake4, width: "268", height: "192" },
+  { id: 15, Image: cupcake5, width: "268", height: "192" },
+  { id: 16, Image: cupcake6, width: "268", height: "192" },
 ];
 
 export const Cupcakes = () => {
-  // const [currentData, setCurrentData] = useState<ICake[]>([]);
-
   const tittle = "Капкейки";
   const secondTittle = "Наши вкусы";
   const price = "";
-
-  // const { data: cupcakes } = useFetchCupcakesQuery();
-
-  // useEffect(() => {
-  //   let documents: IFirestoreDocument[] = [];
-  //   if (cupcakes !== null) {
-  //     documents = Array.isArray(cupcakes?.documents) ? cupcakes.documents : [];
-
-  //     const updatedDesserts = documents.map((doc) => ({
-  //       id: doc.name,
-  //       Image: doc.fields.Image.stringValue,
-  //       Description: doc.fields.Description.stringValue,
-  //       Price: doc.fields.Price.integerValue,
-  //     }));
-  //     setCurrentData(updatedDesserts);
-  //   }
-  // }, [cupcakes]);
 
   const priceDetails: React.ReactNode = (
     <ul className="page-builder-bottom-info-list-detail">
@@ -83,7 +58,6 @@ export const Cupcakes = () => {
   return (
     <div className="cupcakes-container">
       <PageBuilder
-        // data={currentData}
         tittle={tittle}
         secondTittle={secondTittle}
         price={price}

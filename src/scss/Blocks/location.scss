@@ -1,14 +1,24 @@
 @use "../variables" as *;
 .location-container {
-  background-color: #f4efeb;
+  position: relative;
+  background-color: #fff;
   padding-bottom: 80px;
+
+  .location-header {
+    position: absolute;
+    top: -111px;
+    background-color: $main-color;
+    width: 100%;
+    height: 111px;
+    border-radius: 0 0 20px 20px;
+    height: 111px;
+  }
 
   .location-title {
     font-weight: 600;
     font-size: 32px;
     text-align: center;
     padding-top: 40px;
-    color: $navy-blue;
   }
 
   .location-map-container {
@@ -19,7 +29,6 @@
     .location-info-title {
       font-weight: 600;
       font-size: 20px;
-      color: $navy-blue;
     }
 
     .location-info-container {
@@ -34,7 +43,6 @@
         .location-info-title {
           font-weight: 600;
           font-size: 20px;
-          color: $navy-blue;
           text-align: center;
         }
 
@@ -45,9 +53,11 @@
           padding-top: 40px;
 
           .location-info-contacts-phone a {
+            display: flex;
+            gap: 5px;
             font-weight: 600;
             font-size: 16px;
-            color: $red-accent;
+            align-items: center;
 
             &:hover {
               font-size: 18px;
@@ -70,6 +80,7 @@
     align-items: center;
     gap: 30px;
     padding-top: 40px;
+    padding-bottom: 50px;
   }
 }
 

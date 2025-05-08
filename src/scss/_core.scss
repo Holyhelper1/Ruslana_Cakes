@@ -11,11 +11,13 @@ body {
   }
 
   &::-webkit-scrollbar-track {
-    background: $navy-blue;
+    // background: $main-text-color;
+    background: transparent;
   }
 
   &::-webkit-scrollbar-thumb {
-    background: $main-color;
+    // background: $main-color;
+    background: $main-text-color;
     border-radius: 10px;
   }
 
@@ -170,7 +172,9 @@ input[type="number"] {
 }
 
 .active {
-  border-bottom: 2px solid $red-accent !important;
+  border-bottom: 1px solid $red-accent !important;
+  // animation: underline 0.9s forwards;
+  
 }
 
 .page-builder-bottom-info-list {
@@ -222,6 +226,18 @@ input[type="number"] {
     font-size: 16px;
     padding-bottom: 12px;
   }
+}
+
+@keyframes underline {
+  0% {
+    // transform: scaleX(0);
+    opacity: 0;
+    }
+    100% {
+      // transform: scaleX(1);
+      opacity: 1;
+    }
+  
 }
 
 @media screen and (max-width: 600px) {

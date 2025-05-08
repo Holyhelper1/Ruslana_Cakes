@@ -10,6 +10,11 @@ import {
   useFetchMeringueQuery,
 } from "../../Slices/firebase-api-slice";
 
+interface IFetchError {
+  status: number;
+  data: any;
+}
+
 enum DessertType {
   cakes = "Торты",
   bento = "Бенто-торты",
@@ -165,17 +170,23 @@ export const Catalog = () => {
     meringueError,
   ]);
 
-  const handleFetchError = (error: any, type: string) => {
-    if ("status" in error) {
-      setError(
-        `Ошибка при загрузке ${type}: статус ${
-          error.status
-        }, данные: ${JSON.stringify(error.data)}`
-      );
+  const handleFetchError = (error: unknown, type: string) => {
+    if (typeof error === "object" && error !== null) {
+      if ("status" in error && "data" in error) {
+        const err = error as IFetchError;
+        setError(
+          `Ошибка при загрузке ${type}: статус ${err.status}, данные: ${JSON.stringify(err.data)}`
+        );
+      } else if ("message" in error) {
+        const err = error as { message?: string };
+        setError(
+          `Ошибка при загрузке ${type}: ${err.message || "Неизвестная ошибка"}`
+        );
+      } else {
+        setError(`Ошибка при загрузке ${type}: Неизвестная ошибка`);
+      }
     } else {
-      setError(
-        `Ошибка при загрузке ${type}: ${error.message || "Неизвестная ошибка"}`
-      );
+      setError(`Ошибка при загрузке ${type}: ${String(error)}`);
     }
   };
 
@@ -213,20 +224,6 @@ export const Catalog = () => {
         <div className="catalog-cards-wide">
           <CakeCard cake={currentBentoPlus[0]} typeOfDessert="Бенто+Капкейки" />
         </div>
-
-        {/* <div className="catalog-cards">
-          {currentDessert.length > 0 ? (
-            currentDessert.map((item) => <CakeCard key={item.id} cake={item} />)
-          ) : (
-            <p>Нет доступных товаров в этой категории.</p>
-          )}
-        </div>
-        <div className="catalog-cards-top">
-          <p className="catalog-top-seller-title">Top seller</p>
-          {currentDessert.length > 0 && (
-            <CakeCard cake={currentDessert[topSellers]} />
-          )}
-        </div> */}
       </div>
     </div>
   );

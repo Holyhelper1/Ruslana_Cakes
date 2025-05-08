@@ -49,7 +49,8 @@ export const AdminControlPanel: React.FC = () => {
 
   const { data: cakesData, isFetching: cakesFetching } = useFetchCakesQuery();
   const { data: bentoData, isFetching: bentoFetching } = useFetchBentoQuery();
-  const { data: cupcakesData, isFetching: cupcakesFetching } = useFetchCupcakesQuery();
+  const { data: cupcakesData, isFetching: cupcakesFetching } =
+    useFetchCupcakesQuery();
 
   const [updateCake] = useUpdateCakeMutation();
   const [updateBento] = useUpdateBentoMutation();
@@ -63,9 +64,9 @@ export const AdminControlPanel: React.FC = () => {
   const [createBento] = useCreateBentoMutation();
   const [createCupcake] = useCreateCupcakeMutation();
 
-
-  const isDescriptionInvalid = newData.Description.length === 0 || newData.Description.length > 130;
-  const isFormValid = newData.Description.length > 0 && newData.Description.length <= 130 && newData.Image && newData.Price;
+  const isDescriptionInvalid =
+    newData.Description.length === 0 || newData.Description.length > 130;
+  // const isFormValid = newData.Description.length > 0 && newData.Description.length <= 130 && newData.Image && newData.Price;
 
   useEffect(() => {
     let documents: IFirestoreDocument[] = [];
@@ -285,7 +286,9 @@ export const AdminControlPanel: React.FC = () => {
                     width={"30px"}
                     height={"auto"}
                     loading="lazy"
-                    onClick={() => setIsCreatingNewDessert(!isCreatingNewDessert)}
+                    onClick={() =>
+                      setIsCreatingNewDessert(!isCreatingNewDessert)
+                    }
                   />
                 </div>
                 {isCreatingNewDessert && (
@@ -303,7 +306,12 @@ export const AdminControlPanel: React.FC = () => {
                       required
                     />
                     <p>Текущая длинна: {newData.Description.length}</p>
-                    {isDescriptionInvalid && <p style={{ color: 'red' }}>Описание не может быть пустым и должно быть короче 130 символов.</p>}
+                    {isDescriptionInvalid && (
+                      <p style={{ color: "red" }}>
+                        Описание не может быть пустым и должно быть короче 130
+                        символов.
+                      </p>
+                    )}
                     <input
                       className="input"
                       style={{ marginBottom: "10px" }}
@@ -424,19 +432,27 @@ export const AdminControlPanel: React.FC = () => {
                     <div className="admin-control-panel-chosen-dessert-name">
                       Описание:
                       <hr></hr>
-                      {doc.isEditingText ? (<>
-                      
-                        <textarea
-                          className="admin-control-panel-textarea"
-                          defaultValue={doc.fields.Description.stringValue}
-                          maxLength={130}
-                          onChange={(e) =>
-                            handleEditTextChange(doc.name, e.target.value)
-                          }
+                      {doc.isEditingText ? (
+                        <>
+                          <textarea
+                            className="admin-control-panel-textarea"
+                            defaultValue={doc.fields.Description.stringValue}
+                            maxLength={130}
+                            onChange={(e) =>
+                              handleEditTextChange(doc.name, e.target.value)
+                            }
                           />
-                          <p>Текущая длинна: {doc.fields.Description.stringValue.length}</p>
-                        {isDescriptionInvalid && <p style={{ color: 'red' }}>Описание не может быть пустым и должно быть короче 130 символов.</p>}
-                      </>
+                          <p>
+                            Текущая длинна:{" "}
+                            {doc.fields.Description.stringValue.length}
+                          </p>
+                          {isDescriptionInvalid && (
+                            <p style={{ color: "red" }}>
+                              Описание не может быть пустым и должно быть короче
+                              130 символов.
+                            </p>
+                          )}
+                        </>
                       ) : (
                         <p>{doc.fields.Description.stringValue}</p>
                       )}

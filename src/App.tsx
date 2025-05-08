@@ -1,6 +1,5 @@
 import './firebase';
 import { Route, Routes } from "react-router";
-import { Footer } from "./Components/Footer/Footer";
 import { Header } from "./Components/Header/Header";
 import { RouteConfig, routes } from "./routes/routes";
 import { useDispatch } from "react-redux";
@@ -21,7 +20,6 @@ const App: React.FC = () => {
           <Route key={path} path={path} element={<Component />} />
         ))}
       </Routes>
-      {/* <Footer /> */}
     </>
   );
 };

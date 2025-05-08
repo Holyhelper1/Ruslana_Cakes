@@ -7,7 +7,7 @@ import { MainFooter } from "./Main-footer/Main-footer";
 export const Main: React.FC = () => {
   return (
     <>
-      <main className="main">
+      <main className="main" id="main">
         <h1 className="visually-hidden">Торты на заказ в Нижнем Новгороде</h1>
         <div className="main-title-container">
           <h2 className="main-title">Кондитерские шедевры</h2>

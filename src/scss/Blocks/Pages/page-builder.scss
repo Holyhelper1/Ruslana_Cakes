@@ -25,10 +25,23 @@
       height: 111px;
     }
 
+    .page-builder-nav-list {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      width: 70%;
+      // gap: 45px;
+      padding-top: 42px;
+      font-size: clamp(14px, 1.40vw, 18px);
+      flex-wrap: wrap;
+
+      
+    }
+
     .page-builder-title {
       font-family: $font-family-bold;
       font-weight: 700;
-      font-size: clamp(20px, 4.3vw, 55px);
+      font-size: clamp(27px, 4.3vw, 55px) !important;
       text-align: center;
       line-height: 110%;
       text-transform: uppercase;
@@ -294,6 +307,10 @@
   .page-builder-header {
     top: -200px !important;
     height: 200px !important;
+  }
+
+  .page-builder-nav-list {
+    width: 100% !important;
   }
 }
 
