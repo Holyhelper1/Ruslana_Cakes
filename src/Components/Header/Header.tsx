@@ -4,7 +4,7 @@ import headerLogo from "../../assets/Full-logo.svg";
 export const Header = () => {
   return (
     <header className="header">
-      <div className="header-menu-list">
+      <div className="header-menu-list-phone">
         <p className="header-menu-item">
           <a href="tel:+79092841484"> Телефон: +7-909-284-14-84</a>
         </p>
@@ -14,9 +14,11 @@ export const Header = () => {
           </a>
         </p>
       </div>
-      <div>
+      <div className="header-logo">
         <Link to="/" onClick={() => scrollToSection("main")}>
-          <img className="header-logo" src={headerLogo} alt="Logo" title="На главную"/>
+          <img 
+          //  className="header-logo" 
+           src={headerLogo} alt="Logo" title="На главную"/>
         </Link>
       </div>
       <div className="header-menu-list">

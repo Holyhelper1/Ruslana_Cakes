@@ -129,8 +129,11 @@ export const AdminControlPanel: React.FC = () => {
 
     const updatedCake: { fields: IFirestoreDocument["fields"] } = {
       fields: {
-        Image: {
-          stringValue: dessertToUpdate?.fields.Image.stringValue,
+        Image: {          
+          stringValue: 
+          //   думаю стоит так добавить
+          newData.Image ||   
+          dessertToUpdate?.fields.Image.stringValue,
         },
         Description: {
           stringValue:
@@ -153,6 +156,9 @@ export const AdminControlPanel: React.FC = () => {
           [isEditingParam]: !doc[isEditingParam],
         };
       }
+
+      // console.log(doc);
+      
       return doc;
     });
 
@@ -227,6 +233,24 @@ export const AdminControlPanel: React.FC = () => {
     );
   };
 
+  const handleEditImageChange = (id: string, value: string) => {
+    setNewData((prev) => ({
+      ...prev,
+      Image: value,
+      }));
+
+      setCurrentDessert((prev) =>
+        prev.map((doc) =>
+          doc.name === id
+            ? {
+                ...doc,
+                fields: { ...doc.fields, Image: { stringValue: value } },
+              }
+            : doc
+        )
+      );
+  }
+
   const handleEditPriceChange = (id: string, value: string) => {
     setNewData((prev) => ({
       ...prev,
@@ -262,6 +286,7 @@ export const AdminControlPanel: React.FC = () => {
       console.error("Failed to delete dessert:", error);
     }
   };
+  
 
   return (
     <>
@@ -506,6 +531,9 @@ export const AdminControlPanel: React.FC = () => {
                           style={{ marginTop: "10px" }}
                           type="url"
                           defaultValue={doc.fields.Image.stringValue}
+                          onChange={(e) =>
+                            handleEditImageChange(doc.name, e.target.value)
+                          }
                           required
                         />
                       )}
@@ -515,7 +543,7 @@ export const AdminControlPanel: React.FC = () => {
                             <button
                               className="save-button"
                               onClick={() =>
-                                handleEditToggle(doc.name, "isEditingImage")
+                                handleUpdate(doc.name, "isEditingImage")
                               }
                             >
                               Сохранить

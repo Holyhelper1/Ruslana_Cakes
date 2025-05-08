@@ -37,22 +37,67 @@
 
   
   }
+  .header-menu-list-phone {
+    display: flex;
+    flex-direction: column;
+
+    .header-menu-item {
+      cursor: pointer ;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 1.2;
+      color: $main-text-color;
+
+      a {
+        cursor: pointer;
+        color: $main-text-color;
+
+        &:hover {
+          color: $red-accent;
+        }
+      }
+    }
+
+  
+  }
 
   .header-logo {
+    display: flex;
+    justify-content: center;
     cursor: pointer;
-    width: 9.45em;
-    // height: 75px;
-    // background: url("/src/assets/header/header-logo.svg") no-repeat center ;
+    height: 111px;
     background-size: cover;
+    box-sizing: border-box;
+    padding-block: 18px;
+
+    img {
+      width: auto;
+      height: 100%;
+    }
+    
+
   }
 }
 
 @media screen and (max-width: 768px) {
   .header {
-    height: 200px;
-    justify-content: center;
+    // height: 200px;
+    height: 65px !important;
+    flex-direction: row-reverse !important;
+    justify-content: space-between;
+    padding: 15px 30px !important;
+    box-sizing: border-box;
+
+    .header-menu-list-phone p {
+      font-size: 10px !important;
+    }
     .header-menu-list {
       display: none;
+    }
+
+    .header-logo {
+      height: 65px;
+      padding-block: 15px;
     }
   }
 }

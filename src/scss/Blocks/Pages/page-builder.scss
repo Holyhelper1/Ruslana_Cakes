@@ -30,7 +30,6 @@
       flex-direction: row;
       justify-content: space-between;
       width: 70%;
-      // gap: 45px;
       padding-top: 42px;
       font-size: clamp(14px, 1.40vw, 18px);
       flex-wrap: wrap;
@@ -305,8 +304,10 @@
 
 @media screen and (max-width: 768px) {
   .page-builder-header {
-    top: -200px !important;
-    height: 200px !important;
+    // top: -200px !important;
+    // height: 200px !important;
+    top: -65px !important;
+    height: 65px !important;
   }
 
   .page-builder-nav-list {
