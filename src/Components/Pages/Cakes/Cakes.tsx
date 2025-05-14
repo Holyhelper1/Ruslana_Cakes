@@ -1,9 +1,3 @@
-// import { useEffect, useState } from "react";
-// import {
-//   ICake,
-//   IFirestoreDocument,
-//   useFetchCakesQuery,
-// } from "../../../Slices/firebase-api-slice";
 import { PageBuilder } from "../Components/Page-builder";
 import cake1 from "/src/assets/Cakes/cards/cake1.png";
 import cake2 from "/src/assets/Cakes/cards/cake2.png";
@@ -80,32 +74,9 @@ const cakeImages: ICakeImage[] = [
 ];
 
 export const Cakes = () => {
-  // const [currentData, setCurrentData] = useState<ICake[]>([]);
   const tittle = "Торты";
   const price = "от 2200 руб./кг";
   const secondTittle = "Наши вкусы";
-
-  // const {
-  //   data: cakes,
-  //   // isFetching: cakesFetching,
-  //   // error: cakesError,
-  // } = useFetchCakesQuery();
-
-  // useEffect(() => {
-  //   let documents: IFirestoreDocument[] = [];
-  //   if (cakes !== null) {
-  //     documents = Array.isArray(cakes?.documents) ? cakes.documents : [];
-
-  //     const updatedDesserts = documents.map((doc) => ({
-  //       id: doc.name,
-  //       Image: doc.fields.Image.stringValue,
-  //       Description: doc.fields.Description.stringValue,
-  //       Price: doc.fields.Price.integerValue,
-  //     }));
-  //     setCurrentData(updatedDesserts);
-  //   }
-
-  // }, [cakes]);
 
   const extraInfo = (
     <div className="page-builder-extra-info-container">
@@ -124,7 +95,6 @@ export const Cakes = () => {
   return (
     <div className="cakes-container">
       <PageBuilder
-        // data={currentData}
         tittle={tittle}
         secondTittle={secondTittle}
         price={price}

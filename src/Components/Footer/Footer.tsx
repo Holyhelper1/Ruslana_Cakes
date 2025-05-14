@@ -39,7 +39,6 @@ export const Footer = () => {
       </div>
       <hr className="footer-hr"></hr>
       <p>© {yearNow} Ruslana Cakes</p>
-      {/* {isModalOpen && <Modal onClose={() => setIsModalOpen(false)} />} */}
     </div>
   );
 };

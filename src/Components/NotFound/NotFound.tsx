@@ -2,8 +2,7 @@ export const NotFound: React.FC = () => {
   return (
     <>
       <div className="not-found-container">
-        <div className="not-found-header-color">
-        </div>
+        <div className="not-found-header-color"></div>
         <hr className="not-found-hr"></hr>
         <h1 className="not-found-title">404 - Страница не найдена</h1>
         <p className="not-found-message">

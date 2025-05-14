@@ -129,11 +129,10 @@ export const AdminControlPanel: React.FC = () => {
 
     const updatedCake: { fields: IFirestoreDocument["fields"] } = {
       fields: {
-        Image: {          
-          stringValue: 
-          //   думаю стоит так добавить
-          newData.Image ||   
-          dessertToUpdate?.fields.Image.stringValue,
+        Image: {
+          stringValue:
+            //   думаю стоит так добавить
+            newData.Image || dessertToUpdate?.fields.Image.stringValue,
         },
         Description: {
           stringValue:
@@ -158,7 +157,7 @@ export const AdminControlPanel: React.FC = () => {
       }
 
       // console.log(doc);
-      
+
       return doc;
     });
 
@@ -237,19 +236,19 @@ export const AdminControlPanel: React.FC = () => {
     setNewData((prev) => ({
       ...prev,
       Image: value,
-      }));
+    }));
 
-      setCurrentDessert((prev) =>
-        prev.map((doc) =>
-          doc.name === id
-            ? {
-                ...doc,
-                fields: { ...doc.fields, Image: { stringValue: value } },
-              }
-            : doc
-        )
-      );
-  }
+    setCurrentDessert((prev) =>
+      prev.map((doc) =>
+        doc.name === id
+          ? {
+              ...doc,
+              fields: { ...doc.fields, Image: { stringValue: value } },
+            }
+          : doc
+      )
+    );
+  };
 
   const handleEditPriceChange = (id: string, value: string) => {
     setNewData((prev) => ({
@@ -286,7 +285,6 @@ export const AdminControlPanel: React.FC = () => {
       console.error("Failed to delete dessert:", error);
     }
   };
-  
 
   return (
     <>

@@ -2,7 +2,8 @@ import { PageBuilder } from "../Components/Page-builder";
 import { IFlavors } from "../Cakes/Cakes";
 import { bentoCakeImages } from "../Bento/Bento";
 import { cupcakeCakeImages } from "../Cupcakes/Cupcakes";
-
+import dot from "../../Elements/dot";
+import donutDot from "../../Elements/donutDot";
 
 const flavors: IFlavors[] = [
   {
@@ -30,26 +31,25 @@ const flavors: IFlavors[] = [
   },
 ];
 
-
 const extraFlavors: IFlavors[] = [
-    {
-      id: 1,
-      name: "Бисквит:",
-      description: "ванильный / шоколадный / миндальный",
-    },
-    {
-      id: 2,
-      name: "Начинка:",
-      description:
-        "домашняя карамель / фруктовое конфи (клубника, вишня, малина)",
-    },
-    {
-      id: 3,
-      name: "Декор:",
-      description:
-        "стандартный (посыпка) входит в стоимость, дополнительные украшения и свежие ягоды оплачиваются отдельно",
-    },
-  ];
+  {
+    id: 1,
+    name: "Бисквит:",
+    description: "ванильный / шоколадный / миндальный",
+  },
+  {
+    id: 2,
+    name: "Начинка:",
+    description:
+      "домашняя карамель / фруктовое конфи (клубника, вишня, малина)",
+  },
+  {
+    id: 3,
+    name: "Декор:",
+    description:
+      "стандартный (посыпка) входит в стоимость, дополнительные украшения и свежие ягоды оплачиваются отдельно",
+  },
+];
 
 export const BentoPlusCupcakes = () => {
   const title = "Набор “бенто + капкейки”";
@@ -57,7 +57,7 @@ export const BentoPlusCupcakes = () => {
   const cupcakesTitle = "Капкейки";
   const price = "";
 
-  const bentoPlusImages = bentoCakeImages.concat(cupcakeCakeImages)
+  const bentoPlusImages = bentoCakeImages.concat(cupcakeCakeImages);
 
   const details: React.ReactNode = (
     <ul className="page-builder-bottom-info-list">
@@ -74,16 +74,16 @@ export const BentoPlusCupcakes = () => {
         <strong>Включено в стоимость:</strong>:
       </li>
       <li className="page-builder-bottom-info-list-item">
-        Покрытие любого цвета
+        {dot} Покрытие любого цвета
       </li>
       <li className="page-builder-bottom-info-list-item">
-        Надпись или рисунок
+        {dot} Надпись или рисунок
       </li>
       <li className="page-builder-bottom-info-list-item">
-        Подарочная упаковка: коробка с лентой, ложечка, открытка
+        {dot} Подарочная упаковка: коробка с лентой, ложечка, открытка
       </li>
       <li className="page-builder-bottom-info-list-item">
-        Фирменный пакет с ручками
+        {dot} Фирменный пакет с ручками
       </li>
     </ul>
   );
@@ -91,39 +91,36 @@ export const BentoPlusCupcakes = () => {
   const priceDetails: React.ReactNode = (
     <ul className="page-builder-bottom-info-list-detail">
       <li className="page-builder-bottom-info-list-detail-item">
-      2 капкейка + бенто-торт 2500 руб
+        {donutDot} 2 капкейка + бенто-торт 2500 руб
       </li>
       <li className="page-builder-bottom-info-list-detail-item">
-      5 капкейков + бенто-торт 3200 руб
-      </li>      
+        {donutDot} 5 капкейков + бенто-торт 3200 руб
+      </li>
     </ul>
   );
 
-  const secondFlavors = (<>
-  <h2 className="page-builder-info-card-title">{cupcakesTitle}</h2>
-    <ol className="page-builder-info-card-list">
-              {extraFlavors.length > 0 &&
-                extraFlavors.map((item) => (
-                  <li
-                    key={item.id}
-                    className="page-builder-info-card-list-item"
-                  >
-                    <h3 className="page-builder-info-card-list-item-title">
-                      {item.name}
-                    </h3>
-                    <p className="page-builder-info-card-list-item-description">
-                      {item.description}
-                    </p>
-                  </li>
-                ))}
-            </ol>
-  </>
-  )
+  const secondFlavors = (
+    <>
+      <h2 className="page-builder-info-card-title">{cupcakesTitle}</h2>
+      <ol className="page-builder-info-card-list">
+        {extraFlavors.length > 0 &&
+          extraFlavors.map((item) => (
+            <li key={item.id} className="page-builder-info-card-list-item">
+              <h3 className="page-builder-info-card-list-item-title">
+                {item.name}
+              </h3>
+              <p className="page-builder-info-card-list-item-description">
+                {item.description}
+              </p>
+            </li>
+          ))}
+      </ol>
+    </>
+  );
 
   return (
     <div className="bento-plus-cupcakes-container">
       <PageBuilder
-        // data={currentData}
         secondTittle={secondTitle}
         price={price}
         tittle={title}
@@ -134,8 +131,6 @@ export const BentoPlusCupcakes = () => {
         secondFlavors={secondFlavors}
         cakeImages={bentoPlusImages}
       />
-      {/* <Bento/>
-        <Cupcakes/> */}
     </div>
   );
 };

@@ -1,9 +1,4 @@
-// import {
-//   ICake,
-//   IFirestoreDocument,
-//   useFetchBentoQuery,
-// } from "../../../Slices/firebase-api-slice";
-// import { useEffect, useState } from "react";
+import dot from "../../Elements/dot";
 import { ICakeImage, IFlavors } from "../Cakes/Cakes";
 import { PageBuilder } from "../Components/Page-builder";
 import bento1 from "/src/assets/Bento/cards/bento1.png";
@@ -52,34 +47,9 @@ export const bentoCakeImages: ICakeImage[] = [
   { id: 8, Image: bento8, width: "268", height: "208" },
 ];
 export const Bento = () => {
-  // const [currentData, setCurrentData] = useState<ICake[]>([]);
-
   const tittle = "Бенто-торты";
   const secondTittle = "Наши вкусы";
   const price = "2000 руб./кг";
-
-  // const {
-  //   data: bento,
-  //   // isFetching: bentoFetching,
-  //   // error: bentoError,
-  // } = useFetchBentoQuery();
-
-  // useEffect(() => {
-
-  //   let documents: IFirestoreDocument[] = [];
-  //   if (bento !== null) {
-  //     documents = Array.isArray(bento?.documents) ? bento.documents : [];
-
-  //     const updatedDesserts = documents.map((doc) => ({
-  //       id: doc.name,
-  //       Image: doc.fields.Image.stringValue,
-  //       Description: doc.fields.Description.stringValue,
-  //       Price: doc.fields.Price.integerValue,
-  //     }));
-  //     setCurrentData(updatedDesserts);
-  //   }
-
-  // }, [bento]);
 
   const details: React.ReactNode = (
     <ul className="page-builder-bottom-info-list">
@@ -96,16 +66,16 @@ export const Bento = () => {
         <strong>Включено в стоимость:</strong>:
       </li>
       <li className="page-builder-bottom-info-list-item">
-        Покрытие любого цвета
+        {dot} Покрытие любого цвета
       </li>
       <li className="page-builder-bottom-info-list-item">
-        Надпись или рисунок
+        {dot} Надпись или рисунок
       </li>
       <li className="page-builder-bottom-info-list-item">
-        Подарочная упаковка: коробка с лентой, ложечка, открытка
+        {dot} Подарочная упаковка: коробка с лентой, ложечка, открытка
       </li>
       <li className="page-builder-bottom-info-list-item">
-        Фирменный пакет с ручками
+        {dot} Фирменный пакет с ручками
       </li>
     </ul>
   );

@@ -1,18 +1,7 @@
 import cupcakesIcons1 from "../../assets/how-order-icon1.svg";
 import cupcakesIcons2 from "../../assets/how-order-icon2.svg";
+import dot from "../Elements/dot";
 export const HowToOrder = () => {
-  const dot = (
-    <svg
-      width="9"
-      height="9"
-      viewBox="0 0 9 9"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <circle cx="4.16602" cy="4.7085" r="4" fill="#412540" />
-    </svg>
-  );
-
   return (
     <div className="how-to-order-container">
       <h2 className="how-to-order-container-tittle">Как оформить заказ</h2>

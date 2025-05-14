@@ -1,9 +1,3 @@
-// import { useEffect, useState } from "react";
-// import {
-//   ICake,
-//   IFirestoreDocument,
-//   useFetchMeringueQuery,
-// } from "../../../Slices/firebase-api-slice";
 import { PageBuilder } from "../Components/Page-builder";
 import { ICakeImage } from "../Cakes/Cakes";
 import meringue1 from "/src/assets/Meringue/cards/meringue1.png";
@@ -16,27 +10,9 @@ const cakeImages: ICakeImage[] = [
 ];
 
 export const Meringue = () => {
-  // const [currentData, setCurrentData] = useState<ICake[]>([]);
   const tittle = "Меренговый рулет";
   const secondTittle = "классический";
-  const price = "2000 руб./кг";
-
-  // const { data: meringue } = useFetchMeringueQuery();
-
-  // useEffect(() => {
-  //   let documents: IFirestoreDocument[] = [];
-  //   if (meringue !== null) {
-  //     documents = Array.isArray(meringue?.documents) ? meringue.documents : [];
-
-  //     const updatedDesserts = documents.map((doc) => ({
-  //       id: doc.name,
-  //       Image: doc.fields.Image.stringValue,
-  //       Description: doc.fields.Description.stringValue,
-  //       Price: doc.fields.Price.integerValue,
-  //     }));
-  //     setCurrentData(updatedDesserts);
-  //   }
-  // }, [meringue]);
+  const price = "2000 руб.";
 
   const details: React.ReactNode = (
     <ul className="page-builder-bottom-info-list">
@@ -53,7 +29,6 @@ export const Meringue = () => {
   return (
     <div className="meringue-container">
       <PageBuilder
-        // data={currentData}
         tittle={tittle}
         secondTittle={secondTittle}
         price={price}

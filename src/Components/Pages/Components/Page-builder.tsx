@@ -6,6 +6,7 @@ import { Link, useLocation } from "react-router";
 import { ICakeImage, IFlavors } from "../Cakes/Cakes";
 import { Slider } from "./Slider";
 import { scrollToSection } from "../../../Utils/scroll";
+import dot from "../../Elements/dot";
 
 export const PageBuilder = ({
   tittle,
@@ -31,8 +32,6 @@ export const PageBuilder = ({
   cakeImages?: ICakeImage[];
 }) => {
   const { pathname } = useLocation();
-  // console.log(LinkType[tittle]);
-  // console.log('pathname', pathname);
 
   return (
     <div className="page-builder-wrapper">
@@ -115,13 +114,13 @@ export const PageBuilder = ({
                   <strong>Напишите нам, чтобы</strong>:
                 </li>
                 <li className="page-builder-bottom-info-list-item">
-                  Выбрать вкус и размер
+                {dot}  Выбрать вкус и размер
                 </li>
                 <li className="page-builder-bottom-info-list-item">
-                  Обсудить дизайн
+                {dot}   Обсудить дизайн
                 </li>
                 <li className="page-builder-bottom-info-list-item">
-                  Уточнить детали доставки
+                {dot}   Уточнить детали доставки
                 </li>
               </ul>
               <div className="page-builder-price-container">

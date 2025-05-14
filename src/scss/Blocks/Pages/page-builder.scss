@@ -172,20 +172,6 @@
             line-height: 1.9;
             margin-top: 10px;
 
-            .page-builder-bottom-info-list-detail-item {
-              position: relative;
-
-              &:before {
-                position: absolute;
-                content: "";
-                top: 35%;
-                left: -15px;
-                width: 6px;
-                height: 6px;
-                border-radius: 50%;
-                border: 1px solid $main-text-color;
-              }
-            }
           }
           .page-builder-price-container {
             display: flex;
@@ -208,7 +194,6 @@
         grid-template-columns: repeat(2, 1fr);
         gap: 30px;
         box-sizing: border-box;
-        // background-color: #412540;
 
         .page-builder-images-item {
           border-radius: 20px;
@@ -328,6 +313,10 @@
       gap: 50px !important;
       margin-bottom: 30px !important;
 
+      .page-builder-info-card-list-item-title {
+        padding-top: 20px;
+      }
+
       .page-builder-info-card-list-item {
         align-items: center !important;
         border-radius: 20px;
@@ -343,6 +332,11 @@
         }
       }
     }
+
+    .page-builder-bottom-info-container{
+      align-items: flex-start !important;
+    }
+
   }
 
   .page-builder-images-card {

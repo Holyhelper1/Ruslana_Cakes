@@ -6,6 +6,7 @@ import cupcake3 from "/src/assets/Cupcakes/cards/cupcake3.png";
 import cupcake4 from "/src/assets/Cupcakes/cards/cupcake4.png";
 import cupcake5 from "/src/assets/Cupcakes/cards/cupcake5.png";
 import cupcake6 from "/src/assets/Cupcakes/cards/cupcake6.png";
+import donutDot from "../../Elements/donutDot";
 
 const flavors: IFlavors[] = [
   {
@@ -44,13 +45,13 @@ export const Cupcakes = () => {
   const priceDetails: React.ReactNode = (
     <ul className="page-builder-bottom-info-list-detail">
       <li className="page-builder-bottom-info-list-detail-item">
-        6 шт - &nbsp; 1500 руб
+        {donutDot} 6 шт - &nbsp; 1500 руб
       </li>
       <li className="page-builder-bottom-info-list-detail-item">
-        9 шт - &nbsp; 2100 руб
+        {donutDot} 9 шт - &nbsp; 2100 руб
       </li>
       <li className="page-builder-bottom-info-list-detail-item">
-        12 шт - 2900 руб
+        {donutDot} 12 шт - 2900 руб
       </li>
     </ul>
   );
