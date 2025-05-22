@@ -775,22 +775,19 @@ input[type=number] {
 }
 
 @media screen and (max-width: 1250px) {
-  .location-container {
-    padding: 15px;
+  .location-map-container {
+    padding: 30px;
   }
 }
 @media screen and (max-width: 1024px) {
-  .location-container {
-    padding: 15px;
-  }
-  .location-container .location-map-container {
+  .location-map-container {
     display: flex;
-    flex-direction: column;
+    flex-direction: column !important;
     justify-content: center;
     align-items: center;
     gap: 30px;
   }
-  .location-container .location-map-container .location-info-title {
+  .location-map-container .location-info-title {
     text-align: start !important;
   }
 }

@@ -1,4 +1,5 @@
 @use "../variables" as *;
+
 .location-container {
   position: relative;
   background-color: #fff;
@@ -84,28 +85,22 @@
   }
 }
 
-
-
 @media screen and (max-width: 1250px) {
-  .location-container {
-    padding: 15px;
+  .location-map-container {
+    padding: 30px;
   }
 }
 
 @media screen and (max-width: 1024px) {
-  .location-container {
-    padding: 15px;
+  .location-map-container {
+    display: flex;
+    flex-direction: column !important;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
 
-    .location-map-container {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      gap: 30px;
-
-      .location-info-title {
-        text-align: start !important;
-      }
+    .location-info-title {
+      text-align: start !important;
     }
   }
 }
