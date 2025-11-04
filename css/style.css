@@ -1661,31 +1661,70 @@ input[type=number] {
   position: relative;
 }
 
-.slider-image {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.slider-viewport {
+  width: 100%;
+  overflow: hidden;
+  border-radius: 10px;
 }
 
-.slider-image img {
-  max-width: 100%;
+.slider-track {
+  display: flex;
+  width: 100%;
+  will-change: transform;
+}
+
+.slide {
+  min-width: 100%;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slide img {
+  width: 100%;
+  height: auto;
   border-radius: 10px;
-  animation: fade-in 0.5s ease-in-out;
+  display: block;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.slider-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  position: relative;
+}
+
+.slider-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 28px;
+  line-height: 1;
+  padding: 12px;
+  color: #412540;
+  user-select: none;
+}
+
+.slider-button.left {
+  margin-right: 8px;
+  height: 150px;
+}
+
+.slider-button.right {
+  margin-left: 8px;
+  height: 150px;
 }
 
 .slider-controls {
   display: flex;
   align-items: center;
-  margin-top: 15px;
-}
-
-.slider-button {
-  background-color: transparent;
-  width: 20px;
-  height: 100px;
-  border: none;
-  font-size: 24px;
-  cursor: pointer;
+  margin-top: 12px;
+  width: 100%;
+  justify-content: center;
 }
 
 .slider-indicators {
@@ -1701,7 +1740,7 @@ input[type=number] {
   background: #FDFCFB;
   border: 1px solid #412540;
   padding: 0;
-  margin: 0 4px;
+  margin: 0 6px;
   cursor: pointer;
 }
 
@@ -1709,20 +1748,15 @@ input[type=number] {
   background: #412540;
 }
 
-@keyframes fade-in {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
 @media screen and (max-width: 700px) {
   .slider-container {
     display: flex;
     width: 100vw;
   }
-  .slider-image img {
+  .slider-image {
+    min-height: 260px;
+  }
+  .slide img {
     width: 100%;
   }
 }
@@ -2180,6 +2214,11 @@ input[type=number] {
 @media screen and (max-width: 700px) {
   .feedback-container-content-item {
     display: none;
+  }
+}
+@media screen and (max-width: 500px) {
+  .feedback-container {
+    padding-inline: 0;
   }
 }
 

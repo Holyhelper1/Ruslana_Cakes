@@ -1,11 +1,19 @@
-import { useState } from "react";
-import { ICakeImage } from "../Cakes/Cakes";
-import { IFeedbackImages } from "../../Feedback/feedback-db";
+import React, { useRef, useState, useEffect } from "react";
 
-export const Slider = ({ images }: { images: ICakeImage[] | IFeedbackImages[] }) => {
+type Img = { id: string | number; Image: string };
+
+export const Slider = ({ images }: { images: Img[] }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [touchStartX, setTouchStartX] = useState<number | null>(null);
-  const [touchEndX, setTouchEndX] = useState<number | null>(null);
+  const [isDragging, setIsDragging] = useState(false);
+  const [dragStartX, setDragStartX] = useState<number | null>(null);
+  const [dragOffset, setDragOffset] = useState(0); // px
+  const containerRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    if (currentSlide >= images.length) {
+      setCurrentSlide(Math.max(0, images.length - 1));
+    }
+  }, [images.length, currentSlide]);
 
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev + 1) % images.length);
@@ -16,39 +24,98 @@ export const Slider = ({ images }: { images: ICakeImage[] | IFeedbackImages[] })
   };
 
   const handleTouchStart = (e: React.TouchEvent) => {
-    setTouchStartX(e.touches[0].clientX);
+    setDragStartX(e.touches[0].clientX);
+    setIsDragging(true);
   };
 
   const handleTouchMove = (e: React.TouchEvent) => {
-    setTouchEndX(e.touches[0].clientX);
+    if (dragStartX === null) return;
+    const currentX = e.touches[0].clientX;
+    setDragOffset(currentX - dragStartX);
   };
 
   const handleTouchEnd = () => {
-    if (!touchStartX || !touchEndX) return;
-    const distance = touchStartX - touchEndX;
+    if (dragStartX === null) {
+      setIsDragging(false);
+      setDragOffset(0);
+      return;
+    }
 
-    if (distance > 50) nextSlide();
-    else if (distance < -50) prevSlide();
+    const threshold = 50;
+    if (dragOffset < -threshold) {
+      nextSlide();
+    } else if (dragOffset > threshold) {
+      prevSlide();
+    }
+    setDragStartX(null);
+    setIsDragging(false);
+    setDragOffset(0);
+  };
 
-    setTouchStartX(null);
-    setTouchEndX(null);
+  const handleMouseDown = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setDragStartX(e.clientX);
+    setIsDragging(true);
+  };
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (dragStartX === null) return;
+    setDragOffset(e.clientX - dragStartX);
+  };
+  const handleMouseUp = () => {
+    handleTouchEnd();
+  };
+  const handleMouseLeave = () => {
+    if (isDragging) handleTouchEnd();
+  };
+
+  const trackStyle: React.CSSProperties = {
+    transform: `translateX(calc(${-currentSlide * 100}% + ${dragOffset}px))`,
+    transition: isDragging
+      ? "none"
+      : "transform 320ms cubic-bezier(.22,.9,.3,1)",
   };
 
   return (
     <div
       className="slider-container"
+      ref={containerRef}
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
+      onMouseDown={handleMouseDown}
+      onMouseMove={handleMouseMove}
+      onMouseUp={handleMouseUp}
+      onMouseLeave={handleMouseLeave}
     >
       <div className="slider-image">
-        <button onClick={prevSlide} className="slider-button"></button>
-        <img
-          src={images[currentSlide].Image}
-          alt={`Cake ${currentSlide + 1}`}
-        />
-        <button onClick={nextSlide} className="slider-button"></button>
+        <button
+          className="slider-button left"
+          onClick={prevSlide}
+          aria-label="Previous"
+        ></button>
+
+        <div className="slider-viewport">
+          <div className="slider-track" style={trackStyle}>
+            {images.map((img, idx) => (
+              <div className="slide" key={img.id ?? idx}>
+                <img
+                  src={img.Image}
+                  alt={`Slide ${idx + 1}`}
+                  draggable={false}
+                  onDragStart={(e) => e.preventDefault()}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <button
+          className="slider-button right"
+          onClick={nextSlide}
+          aria-label="Next"
+        ></button>
       </div>
+
       <div className="slider-controls">
         <div className="slider-indicators">
           {images.map((image, index) => (
@@ -58,6 +125,7 @@ export const Slider = ({ images }: { images: ICakeImage[] | IFeedbackImages[] })
                 currentSlide === index ? "activeDot" : ""
               }`}
               onClick={() => setCurrentSlide(index)}
+              aria-label={`Перейти на слайд ${index + 1}`}
             />
           ))}
         </div>
